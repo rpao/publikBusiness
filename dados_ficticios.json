@@ -1,266 +1,112 @@
 {
 	"publik":{
 		"locais": {
-			"1": {
+			"id1": {
 				"nome": "Praça Pinto Damásio (Praça da Várzea)",
-				"avaliacao": "4,1",
+				"avaliacao": "4.1",
 				"endereco": "Av Afonso Olindense, SN - Várzea, Recife - PE, 50741-040",
-				"historia": "Foi elaborada pelo consagrado paisagista brasileiro Roberto Burle Marx, falecido em 1994.Em 1936, Burle Marx concebeu um projeto de ajardinamento para a praça que previa um playground, um coreto, um lago central com fonte e um caramanchão que permitiria o sombreamento da área. Nos jardins, o paisagista programou a colocação de mangueiras, ficus-beijamina, oiti-da-praia e palmeira-real – substituídas pelas palmeiras-imperiais que estão até hoje por lá",
-				"latitude":"-8,0491137",
-				"longitude":"-34,9594562",
+				"historia": "Foi elaborada pelo consagrado paisagista brasileiro Roberto Burle Marx, falecido em 1994.Em 1936, Burle Marx concebeu um projeto de ajardinamento para a praça que previa um playground, um coreto, um lago central com fonte e um caramanchão que permitiria o sombreamento da área. Nos jardins, o paisagista programou a colocação de mangueiras, ficus-beijamina, oiti-da-praia e palmeira-real – substituídas pelas palmeiras-imperiais que estão até hoje por lá.",
+				"latitude":"-8.0491137",
+				"longitude":"-34.9594562",
 				"taxas":{
 					"faixaEtaria":{
-						"0":{
-							"valor":"5"
-						},
-						"1":{
-							"valor":"30"
-						},
-						"2":{
-							"valor":"50"
-						},
-						"3":{
-							"valor":"10"
-						},
-						"4":{
-							"valor":"3"
-						},
-						"5":{
-							"valor":"2"
-						}
+						"id0":"5",
+						"id1":"30",
+						"id2":"50",
+						"id3":"10",
+						"id4":"3",
+						"id5":"2"
 					},
 					"classeSocial":{
-						"A":{
-							"valor":"2"
-						},
-						"B":{
-							"valor":"30"
-						},
-						"C":{
-							"valor":"50"
-						},
-						"D":{
-							"valor":"10"
-						},
-						"E":{
-							"valor":"8"
-						}
+						"A":"2",
+						"B":"30",
+						"C":"50",
+						"D":"10",
+						"E":"8"
 					},
-					"taxa_cres_mensal":{
-						"valor":"6,43"
-					},
-					"taxa_retensao":{
-						"valor":"69"
-					},
+					"nivelSats":"50",
+					"mediaMensal":"15",
+					"taxa_cres_mensal":"6.43",
+					"taxa_retensao":"69",
 					"plataforma":{
-						"android":{
-							"percentual":"52,4"
-						},
-						"ios":{
-							"percentual":"31,2"
-						},
-						"outros":{
-							"percentual":"16,1"
-						}
+						"android":"52.4",
+						"ios":"31.2",
+						"outros":"16.1"
 					},
 					"freq_diaria":{
-						"1":{
-							"valor":"10"
-						},
-						"2":{
-							"valor":"20"
-						},
-						"3":{
-							"valor":"8"
-						},
-						"4":{
-							"valor":"13"
-						},
-						"5":{
-							"valor":"30"
-						},
-						"6":{
-							"valor":"31"
-						},
-						"7":{
-							"valor":"18"
-						},
-						"8":{
-							"valor":"42"
-						},
-						"9":{
-							"valor":"12"
-						},
-						"10":{
-							"valor":"37"
-						},
-						"11":{
-							"valor":"10"
-						},
-						"12":{
-							"valor":"20"
-						},
-						"13":{
-							"valor":"8"
-						},
-						"14":{
-							"valor":"13"
-						},
-						"15":{
-							"valor":"30"
-						},
-						"16":{
-							"valor":"31"
-						},
-						"17":{
-							"valor":"18"
-						},
-						"18":{
-							"valor":"42"
-						},
-						"19":{
-							"valor":"12"
-						},
-						"20":{
-							"valor":"37"
-						},
-						"21":{
-							"valor":"10"
-						},
-						"22":{
-							"valor":"20"
-						},
-						"23":{
-							"valor":"8"
-						},
-						"24":{
-							"valor":"13"
-						},
-						"25":{
-							"valor":"30"
-						},
-						"26":{
-							"valor":"31"
-						},
-						"27":{
-							"valor":"18"
-						},
-						"28":{
-							"valor":"42"
-						},
-						"29":{
-							"valor":"12"
-						},
-						"30":{
-							"valor":"37"
-						},
-						"31":{
-							"valor":"10"
-						}
+						"dia1":"10",
+						"dia2":"20",
+						"dia3":"8",
+						"dia4":"13",
+						"dia5":"30",
+						"dia6":"31",
+						"dia7":"18",
+						"dia8":"42",
+						"dia9":"12",
+						"dia10":"37",
+						"dia11":"10",
+						"dia12":"20",
+						"dia13":"8",
+						"dia14":"13",
+						"dia15":"30",
+						"dia16":"31",
+						"dia17":"18",
+						"dia18":"42",
+						"dia19":"12",
+						"dia20":"37",
+						"dia21":"10",
+						"dia22":"20",
+						"dia23":"8",
+						"dia24":"13",
+						"dia25":"30",
+						"dia26":"31",
+						"dia27":"18",
+						"dia28":"42",
+						"dia29":"12",
+						"dia30":"37",
+						"dia31":"10"
 					},
 					"freq_semanal":{
-						"segunda":{
-							"valor":"30"
-						},
-						"terca":{
-							"valor":"25"
-						},
-						"quarta":{
-							"valor":"22"
-						},
-						"quinta":{
-							"valor":"20"
-						},
-						"sexta":{
-							"valor":"35"
-						},
-						"sabado":{
-							"valor":"32"
-						},
-						"domingo":{
-							"valor":"34"
-						}
+						"seg":"30",
+						"ter":"25",
+						"qua":"22",
+						"qui":"20",
+						"sex":"35",
+						"sab":"32",
+						"dom":"34"
 					},
 					"freq_mensal":{
-						"janeiro":{
-							"valor":"340"
-						},
-						"fevereiro":{
-							"valor":"150"
-						},
-						"marco":{
-							"valor":"200"
-						},
-						"abril":{
-							"valor":"231"
-						},
-						"maio":{
-							"valor":"143"
-						},
-						"junho":{
-							"valor":"153"
-						},
-						"julho":{
-							"valor":"400"
-						},
-						"agosto":{
-							"valor":"342"
-						},
-						"setembro":{
-							"valor":"121"
-						},
-						"outubro":{
-							"valor":"331"
-						},
-						"novembro":{
-							"valor":"123"
-						},
-						"dezembro":{
-							"valor":"421"
-						}
+						"jan":"340",
+						"fev":"150",
+						"mar":"200",
+						"abr":"231",
+						"mai":"143",
+						"jun":"153",
+						"jul":"400",
+						"ago":"342",
+						"set":"121",
+						"out":"331",
+						"nov":"123",
+						"dez":"421"
 					}
 				}
 			}
-		},	
+		},
 		"faixaEtaria":{
-			"0":{
-				"rangeIdade":"0-10"
-			},
-			"1":{
-				"rangeIdade":"10-19"
-			},
-			"2":{
-				"rangeIdade":"20-29"
-			},
-			"3":{
-				"rangeIdade":"30-39"
-			},
-			"4":{
-				"rangeIdade":"40-49"
-			},
-			"5":{
-				"rangeIdade":"a partir de 50"
-			}
+			"id0":"0-10",
+			"id1":"10-19",
+			"id2":"20-29",
+			"id3":"30-39",
+			"id4":"40-49",
+			"id5":"a partir de 50"
 		},
 		"modalidade":{
-			"0":{
-				"nome":"funcional"
-			},
-			"1":{
-				"nome":"yoga"
-			},
-			"2":{
-				"nome":"corrida"
-			},
-			"3":{
-				"nome":"ciclismo"
-			},
-			"4":{
-				"nome":"zumba"
-			},
-			"5":{
-				"nome":"calistenico"
-			}
+			"id0":"funcional",
+			"id1":"yoga",
+			"id2":"corrida",
+			"id3":"ciclismo",
+			"id4":"zumba",
+			"id5":"calistenico"
 		},
 		"usuarios":{
 			"123ee":{
@@ -292,37 +138,37 @@
 			}
 		},
 		"grupos":{
-			"0":{
+			"id0":{
 				"nome":"yoga_zen",
 				"lider":"123ee",
 				"modalidade":"1",
 				"participantes":"123ee,1d23f,0909d,8ja29,92nn3,8923n"
 			},
-			"1":{
+			"id1":{
 				"nome":"let's run",
 				"lider":"2323t",
 				"modalidade":"2",
 				"participantes":"123ee,0909d,8ja29,83n34"
 			},
-			"2":{
+			"id2":{
 				"nome":"corredores de rua",
 				"lider":"1d23f",
 				"modalidade":"2",
 				"participantes":"123ee,1d23f,0909d,8ja29,92nn3,8923n"
 			},
-			"3":{
+			"id3":{
 				"nome":"funcional fit",
 				"lider":"0909d",
 				"modalidade":"0",
 				"participantes":"0909d,8ja29,83n34,92nn3,8923n"
 			},
-			"4":{
+			"id4":{
 				"nome":"no pain no gain",
 				"lider":"83n34",
 				"modalidade":"5",
 				"participantes":"123ee,0909d,8ja29,83n34"
 			},
-			"5":{
+			"id5":{
 				"nome":"pedalando",
 				"lider":"8923n",
 				"modalidade":"2",
@@ -330,29 +176,29 @@
 			}
 		},
 		"treinamento":{
-			"0":{
-				"grupo":"0",
+			"id0":{
+				"grupo":"id0",
 				"data":"01/11/2017",
 				"hora_ini":"07:30",
 				"hora_fim":"08:40",
 				"local":"1"
 			},
-			"1":{
-				"grupo":"1",
+			"id1":{
+				"grupo":"id1",
 				"data":"01/11/2017",
 				"hora_ini":"08:00",
 				"hora_fim":"09:00",
 				"local":"1"
 			},
-			"2":{
-				"grupo":"3",
+			"id2":{
+				"grupo":"id3",
 				"data":"03/11/2017",
 				"hora_ini":"10:00",
 				"hora_fim":"11:20",
 				"local":"1"
 			},
-			"3":{
-				"grupo":"0",
+			"id3":{
+				"grupo":"id0",
 				"data":"03/11/2017",
 				"hora_ini":"07:50",
 				"hora_fim":"09:00",
