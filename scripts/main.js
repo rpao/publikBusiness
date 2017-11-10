@@ -66,7 +66,7 @@ FriendlyChat.prototype.initFirebase = function() {
 // Loads chat messages history and listens for upcoming ones.
 FriendlyChat.prototype.loadMessages = function() {
   // Reference to the /messages/ database path.
-  this.messagesRef = this.database.ref('locais');
+  this.messagesRef = this.database.ref('publik/locais');
   // Make sure we remove all previous listeners.
   this.messagesRef.off();
 

@@ -102,12 +102,7 @@ $(document).ready(function () {
 		if($(this).val() != "")
 			carregarNoMapa($(this).val());
 	})
-	
-	$("#btnPainel").click(function() {
-		alert("Painel");
-		location.href = "painel.html";
-	})
-	
+		
 	$("#btnDetalhes").click(function(){
 		var endereco = $("#txtEndereco").val();
 		var latitude = $("#txtLatitude").val();
@@ -115,7 +110,7 @@ $(document).ready(function () {
 		
 		if (endereco != null && latitude != null && longitude != null){
 			alert("Endereço: " + endereco + "\nLatitude: " + latitude + "\nLongitude: " + longitude);
-			location.href = "detalhes.html";//?LL=&"+latitude+"&"+longitude;
+			location.href = "detalhes.html?latlong=&"+latitude+"&"+longitude;
 		}
 	})
 	
@@ -156,6 +151,3 @@ $(document).ready(function () {
 		}
 	});
 });
-
-
-
