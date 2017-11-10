@@ -1,86 +1,36 @@
-[debug] [2017-11-10T09:25:29.927Z] ----------------------------------------------------------------------
-[debug] [2017-11-10T09:25:29.927Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\rebek_000\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2017-11-10T09:25:29.927Z] CLI Version:   3.14.0
-[debug] [2017-11-10T09:25:29.927Z] Platform:      win32
-[debug] [2017-11-10T09:25:29.927Z] Node Version:  v8.9.1
-[debug] [2017-11-10T09:25:29.927Z] Time:          Fri Nov 10 2017 06:25:29 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T09:25:29.927Z] ----------------------------------------------------------------------
+[debug] [2017-11-10T17:26:10.818Z] ----------------------------------------------------------------------
+[debug] [2017-11-10T17:26:10.818Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\rebek_000\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-10T17:26:10.818Z] CLI Version:   3.14.0
+[debug] [2017-11-10T17:26:10.818Z] Platform:      win32
+[debug] [2017-11-10T17:26:10.818Z] Node Version:  v8.9.1
+[debug] [2017-11-10T17:26:10.818Z] Time:          Fri Nov 10 2017 14:26:10 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T17:26:10.818Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-11-10T09:25:29.942Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-11-10T09:25:29.942Z] > authorizing via signed-in user
-[debug] [2017-11-10T09:25:29.942Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2017-11-10T09:25:29.942Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/UoZpzsA_xcLLxSRpSdJ5XvdJ_63ciiCjOA7d6RvVIZG6kGCaJaVsSWm9HE1_2kHW',
+[debug] [2017-11-10T17:26:10.834Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-10T17:26:10.834Z] > authorizing via signed-in user
+[debug] [2017-11-10T17:26:10.834Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-11-10T17:26:10.834Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/UoZpzsA_xcLLxSRpSdJ5XvdJ_63ciiCjOA7d6RvVIZG6kGCaJaVsSWm9HE1_2kHW',
   client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
   client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
   grant_type: 'refresh_token',
   scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Nov 10 2017 06:25:29 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T09:25:30.503Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-10T09:25:30.540Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/teste1-e312a  
- Fri Nov 10 2017 06:25:30 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T09:25:32.099Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-10T09:25:32.099Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/teste1-e312a/tokens  
- Fri Nov 10 2017 06:25:32 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T09:25:33.099Z] <<< HTTP RESPONSE 200
+ Fri Nov 10 2017 14:26:10 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T17:26:11.459Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-10T17:26:11.537Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/teste1-e312a  
+ Fri Nov 10 2017 14:26:11 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T17:26:12.646Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-10T17:26:12.646Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/teste1-e312a/tokens  
+ Fri Nov 10 2017 14:26:12 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T17:26:13.771Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from 'D:\Github\publikBusiness'...
 [info] 
-[debug] [2017-11-10T09:25:33.099Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/teste1-e312a  
- Fri Nov 10 2017 06:25:33 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T09:25:34.366Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-10T09:25:34.366Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/788065374608/clients/_:getWebAppConfig  
- Fri Nov 10 2017 06:25:34 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T09:25:35.897Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: ./
-[info] +  hosting: Local server: http://localhost:5000
-
-[debug] [2017-11-10T15:03:00.206Z] Error: getaddrinfo ENOTFOUND www.gstatic.com www.gstatic.com:443
-    at errnoException (dns.js:50:10)
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2017-11-10T15:03:00.209Z] Error: socket hang up
-    at createHangUpError (_http_client.js:331:15)
-    at TLSSocket.socketCloseListener (_http_client.js:363:23)
-    at emitOne (events.js:121:20)
-    at TLSSocket.emit (events.js:211:7)
-    at _handle.close (net.js:554:12)
-    at TCP.done [as _onclose] (_tls_wrap.js:356:7)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2017-11-10T15:06:46.998Z] ----------------------------------------------------------------------
-[debug] [2017-11-10T15:06:46.998Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\rebek_000\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2017-11-10T15:06:46.998Z] CLI Version:   3.14.0
-[debug] [2017-11-10T15:06:46.998Z] Platform:      win32
-[debug] [2017-11-10T15:06:46.998Z] Node Version:  v8.9.1
-[debug] [2017-11-10T15:06:46.998Z] Time:          Fri Nov 10 2017 12:06:46 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T15:06:46.998Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2017-11-10T15:06:47.029Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-11-10T15:06:47.029Z] > authorizing via signed-in user
-[debug] [2017-11-10T15:06:47.029Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2017-11-10T15:06:47.029Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/UoZpzsA_xcLLxSRpSdJ5XvdJ_63ciiCjOA7d6RvVIZG6kGCaJaVsSWm9HE1_2kHW',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Nov 10 2017 12:06:47 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T15:06:47.693Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-10T15:06:47.771Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/teste1-e312a  
- Fri Nov 10 2017 12:06:47 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T15:06:49.241Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-10T15:06:49.241Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/teste1-e312a/tokens  
- Fri Nov 10 2017 12:06:49 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T15:06:50.210Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from 'D:\Github\publikBusiness'...
-[info] 
-[debug] [2017-11-10T15:06:50.226Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/teste1-e312a  
- Fri Nov 10 2017 12:06:50 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T15:06:51.492Z] <<< HTTP RESPONSE 200
-[debug] [2017-11-10T15:06:51.492Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/788065374608/clients/_:getWebAppConfig  
- Fri Nov 10 2017 12:06:51 GMT-0300 (Hora oficial do Brasil)
-[debug] [2017-11-10T15:06:52.382Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-10T17:26:13.771Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/teste1-e312a  
+ Fri Nov 10 2017 14:26:13 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T17:26:15.131Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-10T17:26:15.131Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/788065374608/clients/_:getWebAppConfig  
+ Fri Nov 10 2017 14:26:15 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T17:26:17.350Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: ./
 [info] +  hosting: Local server: http://localhost:5000
 
