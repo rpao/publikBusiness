@@ -1,0 +1,36 @@
+[debug] [2017-11-10T09:25:29.927Z] ----------------------------------------------------------------------
+[debug] [2017-11-10T09:25:29.927Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\rebek_000\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-11-10T09:25:29.927Z] CLI Version:   3.14.0
+[debug] [2017-11-10T09:25:29.927Z] Platform:      win32
+[debug] [2017-11-10T09:25:29.927Z] Node Version:  v8.9.1
+[debug] [2017-11-10T09:25:29.927Z] Time:          Fri Nov 10 2017 06:25:29 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T09:25:29.927Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-10T09:25:29.942Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-10T09:25:29.942Z] > authorizing via signed-in user
+[debug] [2017-11-10T09:25:29.942Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-11-10T09:25:29.942Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/UoZpzsA_xcLLxSRpSdJ5XvdJ_63ciiCjOA7d6RvVIZG6kGCaJaVsSWm9HE1_2kHW',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Nov 10 2017 06:25:29 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T09:25:30.503Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-10T09:25:30.540Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/teste1-e312a  
+ Fri Nov 10 2017 06:25:30 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T09:25:32.099Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-10T09:25:32.099Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/teste1-e312a/tokens  
+ Fri Nov 10 2017 06:25:32 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T09:25:33.099Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Github\publikBusiness'...
+[info] 
+[debug] [2017-11-10T09:25:33.099Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/teste1-e312a  
+ Fri Nov 10 2017 06:25:33 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T09:25:34.366Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-10T09:25:34.366Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/788065374608/clients/_:getWebAppConfig  
+ Fri Nov 10 2017 06:25:34 GMT-0300 (Hora oficial do Brasil)
+[debug] [2017-11-10T09:25:35.897Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: ./
+[info] +  hosting: Local server: http://localhost:5000
+
