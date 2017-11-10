@@ -15,7 +15,7 @@ ainda nao utiliza {
 		bower install chartist --save
 }
 
-5. Criar projeto no firebase (como o servidor ainda é local, tem que ser feito assim) em
+5. Criar projeto no firebase (como o servidor ainda é local, tem que ser feito assim) e
    configurar seguindo o passo 3 desse tutorial (https://codelabs.developers.google.com/codelabs/firebase-web/#2)
    OBS: por enquanto é necessário fazer login no google para acessar a base de dados.
 
