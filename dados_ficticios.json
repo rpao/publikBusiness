@@ -204,6 +204,30 @@
 				"hora_fim":"09:00",
 				"local":"1"
 			}
+		},
+		"empresa":{
+			"e0":{
+				"nome":"Minha Empresa",
+				"cnpj":"0000/0",
+				"endereco":"Av. S N. 10, Recife, Pernambuco",
+				"fone":"(81)3333-3333"
+			}
+		},
+		"pesquisas":{
+			"p0":{
+				"empresa":"e0",
+				"pergunta":"Quando voce pensa em artigos esportivos, que empresa vem na sua mente?",
+				"escolhas":"",
+				"usuarios":"123ee,8923n,83n34,1738b",
+				"respostas":"nike,adidas,nenhuma,nike"
+			},
+			"p1":{
+				"empresa":"e0",
+				"pergunta":"Qual dos artigos esportivos abaixo voce compra com mais frequencia?",
+				"escolhas":"tenis,boné,camiseta",
+				"usuarios":"123ee,8923n,83n34,1738b",
+				"respostas":"camiseta,camiseta,camiseta,tenis"
+			}
 		}
 	}
 }

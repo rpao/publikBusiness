@@ -102,17 +102,6 @@ $(document).ready(function () {
 		if($(this).val() != "")
 			carregarNoMapa($(this).val());
 	})
-		
-	$("#btnDetalhes").click(function(){
-		var endereco = $("#txtEndereco").val();
-		var latitude = $("#txtLatitude").val();
-		var longitude = $("#txtLongitude").val();
-		
-		if (endereco != null && latitude != null && longitude != null){
-			alert("Endereço: " + endereco + "\nLatitude: " + latitude + "\nLongitude: " + longitude);
-			location.href = "detalhes.html?latlong=&"+latitude+"&"+longitude;
-		}
-	})
 	
 	google.maps.event.addListener(marker, 'drag', function () {
 		geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
