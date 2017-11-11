@@ -216,17 +216,21 @@
 		"pesquisas":{
 			"p0":{
 				"empresa":"e0",
+				"dataCriacao":"09/11/2017",
 				"pergunta":"Quando voce pensa em artigos esportivos, que empresa vem na sua mente?",
 				"escolhas":"",
 				"usuarios":"123ee,8923n,83n34,1738b",
-				"respostas":"nike,adidas,nenhuma,nike"
+				"respostas":"nike,adidas,nenhuma,nike",
+				"status":"closed"
 			},
 			"p1":{
 				"empresa":"e0",
+				"dataCriacao":"01/11/2017",
 				"pergunta":"Qual dos artigos esportivos abaixo voce compra com mais frequencia?",
 				"escolhas":"tenis,boné,camiseta",
 				"usuarios":"123ee,8923n,83n34,1738b",
-				"respostas":"camiseta,camiseta,camiseta,tenis"
+				"respostas":"camiseta,camiseta,camiseta,tenis",
+				"status":"closed"
 			}
 		}
 	}

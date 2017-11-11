@@ -29,12 +29,63 @@ function FriendlyChat() {
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
   this.signInButton.addEventListener('click', this.signIn.bind(this));
   
+  this.messageForm = document.getElementById('novaPergunta-form');
+  this.messageInput = document.getElementById('pergunta');
+  this.opcaoInput = document.getElementById('opcoes');
+  this.submitButton = document.getElementById('submit');
+  
+  // Saves message on form submit.
+  this.messageForm.addEventListener('submit', this.saveMessage.bind(this));
+  
+  // Toggle for the button.
+  var buttonTogglingHandler = this.toggleButton.bind(this);
+  this.messageInput.addEventListener('keyup', buttonTogglingHandler);
+  this.messageInput.addEventListener('change', buttonTogglingHandler);
+
+  
   this.signInButton = document.getElementById('sign-in');
   this.signOutButton = document.getElementById('sign-out');
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
   this.initFirebase();
 }
+
+// Enables or disables the submit button depending on the values of the input
+// fields.
+FriendlyChat.prototype.toggleButton = function() {
+  if (this.messageInput.value) {
+    this.submitButton.removeAttribute('disabled');
+  } else {
+    this.submitButton.setAttribute('disabled', 'true');
+  }
+};
+
+// Saves a new message on the Firebase DB.
+FriendlyChat.prototype.saveMessage = function(e) {
+  e.preventDefault();
+  // Check that the user entered a message and is signed in.
+  if (this.messageInput.value && this.checkSignedInWithMessage()) {
+    var currentUser = this.auth.currentUser;
+
+    // Add a new message entry to the Firebase Database.
+    this.messagesRef.push({
+      empresa: currentUser.displayName,
+	  escolhas: this.opcaoInput.value,
+      pergunta: this.messageInput.value,
+	  respostas:"",
+	  usuarios:"",
+	  status:"open",
+	  dataCriacao:"01/11/2017"
+    }).then(function() {
+      // Clear message text field and SEND button state.
+      FriendlyChat.resetMaterialTextfield(this.messageInput);
+	  FriendlyChat.resetMaterialTextfield(this.opcaoInput);
+      this.toggleButton();
+    }.bind(this)).catch(function(error) {
+      console.error('Error writing new message to Firebase Database', error);
+    });
+  }
+};
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
 FriendlyChat.prototype.initFirebase = function() {
@@ -52,62 +103,7 @@ FriendlyChat.prototype.loadPesquisas = function() {
   this.messagesRef = this.database.ref('publik/pesquisas');
   // Make sure we remove all previous listeners.
   this.messagesRef.off();
-  // Loads the last 12 messages and listen for new ones.
-  var setMessage = function(data) {
-    var val = data.val();
-    this.displayPesquisas(data.key, val.escolhas, val.pergunta, val.resposta, val.status, val.dataCriacao);
-  }.bind(this);
-
-  this.messagesRef.on('child_added', setMessage);
-  this.messagesRef.on('child_changed', setMessage);
-
 };
-
-// Displays a Message in the UI.
-FriendlyChat.prototype.displayPesquisas = function(key, escolhas, pergunta, respostas, status, dataCriacao) {   
-	var div = document.getElementById(key);
-	if (escolhas == ""){
-		escolhas = "Sem opções selecionadas...";
-	}
-
-	if (respostas == ""){
-		respostas = "Nenhuma resposta obtida...";
-	}
-  
-	// If an element for that message does not exists yet we create it.
-	if (!div) {
-	var container = document.createElement('div');	
-	container.innerHTML = '<div class="card-header bg-white">'+
-	'	<div class="message-container">' +
-	'	<div class="spacing"><div class="pic"></div></div>' +
-	'	<form >'+
-	'		<h5><i class="pergunta fa fa-lg fa-question-circle"></i></h5>'+
-	'		<i><h6 class="dataCriacao text-muted"></h6></i>'+
-	'		<i><h6 class="status text-muted"></h6></i>'+
-	'		<a class="btn btn-dark" href="detalhesPesquisa.html?id='+key+'"> Ver Detalhes </a>'+
-	'	</form>'+
-	'</div>';
-
-	div = container.firstChild;
-	div.setAttribute('id', key);
-	this.messageList.appendChild(div);
-	}
-
-	div.querySelector('.pergunta').textContent = " "+pergunta;
-	var respostasElement = div.querySelector('.dataCriacao');
-	var escolhasElement = div.querySelector('.status');
-
-	respostasElement.textContent = "Criado em "+dataCriacao;
-	escolhasElement.textContent = "Satatus: "+status;
-
-	respostasElement.innerHTML = respostasElement.innerHTML.replace(/\n/g, '<br>');
-
-	// Show the card fading-in and scroll to view the new message.
-	setTimeout(function() {div.classList.add('visible')}, 1);
-
-	this.messageList.scrollTop = this.messageList.scrollHeight;
-};
-
 
 // Sets the URL of the given img element with the URL of the image stored in Cloud Storage.
 FriendlyChat.prototype.setImageUrl = function(imageUri, imgElement) {
@@ -142,6 +138,7 @@ FriendlyChat.prototype.onAuthStateChanged = function(user) {
     var profilePicUrl = user.photoURL;
     var userName = user.displayName;
 
+    // Show user's profile and sign-out button.
     this.signOutButton.removeAttribute('hidden');
 
     // Hide sign-in button.
@@ -153,6 +150,7 @@ FriendlyChat.prototype.onAuthStateChanged = function(user) {
     // We save the Firebase Messaging Device token and enable notifications.
     this.saveMessagingDeviceToken();
   } else { // User is signed out!
+    // Hide user's profile and sign-out button.
     this.signOutButton.setAttribute('hidden', 'true');
 
     // Show sign-in button.
@@ -208,6 +206,16 @@ FriendlyChat.prototype.requestNotificationsPermissions = function() {
 FriendlyChat.resetMaterialTextfield = function(element) {
   element.value = '';
   element.parentNode.MaterialTextfield.boundUpdateClassesHandler();
+};
+
+// Enables or disables the submit button depending on the values of the input
+// fields.
+FriendlyChat.prototype.toggleButton = function() {
+  if (this.messageInput.value) {
+    this.submitButton.removeAttribute('disabled');
+  } else {
+    this.submitButton.setAttribute('disabled', 'true');
+  }
 };
 
 // Checks that the Firebase SDK has been correctly setup and configured.
