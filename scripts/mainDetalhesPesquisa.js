@@ -15,6 +15,27 @@
  */
 'use strict';
 
+var param1var = getQueryVariable("id");
+var idPesquisa;
+var idUsuarios = [];
+var feUsuarios = [];
+
+var porcentagemFE = [0,0,0,0,0,0];
+
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);  
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if (pair[0] == variable && pair[1] != null) {
+	    idPesquisa = pair[1];
+    }else{
+		//alert('Erro: Dado solicitado nao foi encontrado');
+		location.assign("pesquisas.html");
+	}
+  } 
+}
+
 // Initializes FriendlyChat.
 function FriendlyChat() {
   this.checkSetup();
@@ -53,9 +74,13 @@ FriendlyChat.prototype.loadPesquisas = function() {
   // Make sure we remove all previous listeners.
   this.messagesRef.off();
   // Loads the last 12 messages and listen for new ones.
-  var setMessage = function(data) {
-    var val = data.val();
-    this.displayPesquisas(data.key, val.pergunta, val.status, val.dataCriacao);
+  var setMessage = function(data) {	
+	
+	if (data.key == idPesquisa){
+		var val = data.val();
+		this.displayPesquisas(data.key, val.escolhas, val.pergunta, val.respostas, val.status, val.dataCriacao, val.usuarios);
+	}
+	
   }.bind(this);
 
   this.messagesRef.on('child_added', setMessage);
@@ -63,44 +88,117 @@ FriendlyChat.prototype.loadPesquisas = function() {
 
 };
 
-// Displays a Message in the UI.
-FriendlyChat.prototype.displayPesquisas = function(key, pergunta, status, dataCriacao) {   
-	var div = document.getElementById(key);
-	
-	// If an element for that message does not exists yet we create it.
-	if (!div) {
-	var container = document.createElement('div');	
-	container.innerHTML = '<div class="card-header bg-white">'+
-	'	<div class="message-container">' +
-	'	<div class="spacing"><div class="pic"></div></div>' +
-	'	<form >'+
-	'		<h5><i class="pergunta fa fa-lg fa-question-circle"></i></h5>'+
-	'		<i><h6 class="dataCriacao text-muted"></h6></i>'+
-	'		<i><h6 class="status text-muted"></h6></i>'+
-	'		<a class="btn btn-dark" href="detalhesPesquisa.html?id='+key+'"> Ver Detalhes </a>'+
-	'	</form>'+
-	'</div>';
-
-	div = container.firstChild;
-	div.setAttribute('id', key);
-	this.messageList.appendChild(div);
-	}
-
-	div.querySelector('.pergunta').textContent = " "+pergunta;
-	var respostasElement = div.querySelector('.dataCriacao');
-	var escolhasElement = div.querySelector('.status');
-
-	respostasElement.textContent = "Criado em "+dataCriacao;
-	escolhasElement.textContent = "Satatus: "+status;
-
-	respostasElement.innerHTML = respostasElement.innerHTML.replace(/\n/g, '<br>');
-
-	// Show the card fading-in and scroll to view the new message.
-	setTimeout(function() {div.classList.add('visible')}, 1);
-
-	this.messageList.scrollTop = this.messageList.scrollHeight;
+// Loads chat messages history and listens for upcoming ones.
+FriendlyChat.prototype.loadUsuarios = function() {
+  // Reference to the /messages/ database path.
+  this.usuariosRef = this.database.ref('publik/usuarios');
+  // Make sure we remove all previous listeners.
+  this.usuariosRef.off();
+  
+  var setUsuario = function(data) {
+    var val = data.val();
+	idUsuarios[idUsuarios.length] = data.key;
+	feUsuarios[feUsuarios.length] = val.faixaEtaria;	
+  }.bind(this);
+  
+  this.usuariosRef.on('child_added', setUsuario);
+  this.usuariosRef.on('child_changed', setUsuario);
 };
 
+// Displays a Message in the UI.
+FriendlyChat.prototype.displayPesquisas = function(key, escolhas, pergunta, respostas, status, dataCriacao, usuario) {
+	var txtPergunta = document.getElementById("pergunta");
+	txtPergunta.textContent = pergunta;
+	
+	var txtDt = document.getElementById("dataCriacao");
+	txtDt.textContent = "Criado em "+dataCriacao;
+	
+	var txtStatus = document.getElementById("status");
+	txtStatus.textContent = "Status: "+status;
+  
+	escolhas = escolhas.split(',');
+	
+	if (respostas == ""){
+		respostas = null;
+	}else{
+		respostas = respostas.split(',');
+	}
+	
+	if (usuario == ""){
+		usuario = null;
+	}else{
+		usuario = usuario.split(',');
+		for(var i = 0; i < idUsuarios.length; i++){
+			var j = usuario.indexOf(idUsuarios[i]);
+			if (j != -1){
+				porcentagemFE[feUsuarios[j][2]] += 1;
+			}
+		}
+	}
+	
+	if (respostas != null){
+		this.contEscolhas(escolhas, respostas);
+	}	
+	
+	if (usuario != null){
+		var labels = ['0-10','10-19','20-29','30-39','40-49','a partir de 50'];	
+		this.chartResposta(porcentagemFE, labels, '#chartFaixaEtaria');
+	}
+};
+
+FriendlyChat.prototype.contEscolhas = function(escolhas, respostas){
+	// contar resposta com maior ocorrencia
+	var cont = [];
+	
+	for (var i = 0; i < escolhas.length; i++){
+		cont[i] = 0;
+		for (var j = 0; j < respostas.length; j++){
+			if (escolhas[i] == respostas[j]){
+				cont[i] += 1;
+			}
+		}
+	}
+	
+	this.chartResposta(cont, escolhas, '#chartEscolhas');
+}
+
+FriendlyChat.prototype.chartResposta = function(dados, labels, chart){
+	
+	var qtd = 0
+	for (var i = 0; i < dados.length; i++){
+		qtd += dados[i];
+	}
+	
+	for (var i = 0; i < dados.length; i++){
+		dados[i] = dados[i]*100.0/qtd;
+	}
+	
+	var data = {
+	  series: dados
+	};
+
+	var options = {
+	  labelInterpolationFnc: function(value) {
+		return value[0];
+	  }
+	};
+
+	var responsiveOptions = [
+	  ['screen and (min-width: 640px)', {
+		chartPadding: 30,
+		labelOffset: 100,
+		labelInterpolationFnc: function(value, idx) {
+		  return labels[idx]+" ("+value+"%)";
+		}
+	  }],
+	  ['screen and (min-width: 1024px)', {
+		labelOffset: 80,
+		chartPadding: 20
+	  }]
+	];
+
+	new Chartist.Pie(chart, data, options, responsiveOptions);
+};
 
 // Sets the URL of the given img element with the URL of the image stored in Cloud Storage.
 FriendlyChat.prototype.setImageUrl = function(imageUri, imgElement) {
@@ -140,9 +238,11 @@ FriendlyChat.prototype.onAuthStateChanged = function(user) {
     // Hide sign-in button.
     this.signInButton.setAttribute('hidden', 'true');
 
-    // We load currently existing chant messages.
-    this.loadPesquisas();
-
+    // We load currently existing chant messages.	
+	this.loadUsuarios();
+	
+	this.loadPesquisas();
+	
     // We save the Firebase Messaging Device token and enable notifications.
     this.saveMessagingDeviceToken();
   } else { // User is signed out!
