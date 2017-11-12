@@ -15,6 +15,8 @@
  */
 'use strict';
 
+var nomeEmpresa;
+
 // Initializes mainPesquisas.
 function mainPesquisas() {
   this.checkSetup();
@@ -225,18 +227,21 @@ mainPesquisas.prototype.loadPesquisas = function() {
   this.messagesRef.off();
   // Loads the last 12 messages and listen for new ones.
   var setMessage = function(data) {
+	var nomeEmpresa = "Nike,Inc";
     var val = data.val();
-    this.displayPesquisas(data.key, val.pergunta, val.status, val.dataCriacao);
+    this.displayPesquisas(data.key, nomeEmpresa, val.pergunta, val.status, val.dataCriacao);
   }.bind(this);
-
+  
   this.messagesRef.on('child_added', setMessage);
   this.messagesRef.on('child_changed', setMessage);
-
 };
 
 // Displays a Message in the UI.
-mainPesquisas.prototype.displayPesquisas = function(key, pergunta, status, dataCriacao) {   
+mainPesquisas.prototype.displayPesquisas = function(key, nomeEmpresa, pergunta, status, dataCriacao) {   
 	var div = document.getElementById(key);
+	
+	var txtNomeEmp = document.getElementById("nomeEmpresa");
+	txtNomeEmp.textContent = nomeEmpresa;
 	
 	// If an element for that message does not exists yet we create it.
 	if (!div) {

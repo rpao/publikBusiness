@@ -68,12 +68,12 @@
 	<p style="line-height: 2em">
 	<p style="line-height: 2em">
 
-	<center>
-		<a id = "painel" class="btn btn-out-secondary" data-toggle="collapse" href="#collapsePainel" aria-expanded="false" aria-controls="collapsePainel">
+	<center>		
+		<a id = "painel" class="btn btn-dark" data-toggle="collapse" href="#collapsePainel" aria-expanded="false" aria-controls="collapsePainel">
 			Painel
 		</a>
 		 
-		<a class="btn btn-out-secondary" href="publikBusinessDescobrir.html">
+		<a class="btn btn-light" href="publikBusinessDescobrir.html">
 			Descobrir
 		</a>
 
@@ -86,38 +86,46 @@
 				<div align="center" class ="container">
 					<img src="https://i.ytimg.com/vi/unZAt4n_opU/maxresdefault.jpg" width="200" height="200" class="border border-success" />
 				</div> 
-
+				<p style="line-height: 2em">
 				<p style="line-height: 2em">
 
-				<font size="7"  style="font-family:Arial">
-				<center>Nike,Inc.</center>
-				</font>
-
+				<center><font id="nomeEmpresa" font size="7"  style="font-family:Arial"></font></center>
+				
 				<p style="line-height: 2em">
 				<p style="line-height: 2em">
 				
 				<center>
 					<p>
-						<!--button class="btn btn-out-secondary" type="button" data-toggle="collapse" href="#collapseDashboard" aria-expanded="false" aria-controls="collapseDashboard">
-							Dashboard
-						</button-->
-						<button class="btn btn-out-secondary" type="button" data-toggle="collapse" data-target="#collapseMenuPesquisa" aria-expanded="false" aria-controls="collapseMenuPesquisa">
-							Pesquisas
-						</button>
-						<!--button class="btn btn-out-secondary" type="button" data-toggle="collapse" data-target="#collapseConfiguracoes" aria-expanded="false" aria-controls="collapseConfiguracoes">
-							Configurações
-						</button-->
+					  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+						<div class="container">
+						  <a class="navbar-brand"></a>
+						  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar3SupportedContent" aria-controls="navbar3SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+						  <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent">
+							<ul class="navbar-nav">
+							  <li class="nav-item">
+								<a class="active nav-link" href="publikBusinessPainelD.html">
+									Dashboard
+								</a>
+							  </li>
+							  <li class="nav-item">
+								<a class="active nav-link" data-toggle="collapse" data-target="#collapseMenuPesquisa" aria-expanded="false" aria-controls="collapseMenuPesquisa">
+									Pesquisas
+								</a>
+							  </li>
+							  <!--li class="nav-item">
+								<a class="active nav-link" type="button" data-toggle="collapse" data-target="#collapseMenuPesquisa" aria-expanded="false" aria-controls="collapseMenuPesquisa">
+									Configurações
+								</a>
+							  </li-->
+							</ul>
+						  </div>
+						</div>
+					  </nav>
 					</p>
 				</center>
 				
-				<div class="collapse" id="collapseDashboard">
-					<div class="card card-body">
-						exemplo1
-					</div>
-				</div>
-				
-				<div class="collapse" id="collapseMenuPesquisa">
-					<div class="card card-body">
+				<div class="collapse show" id="collapseMenuPesquisa">
+					<div class="card">
 						<ul class="nav nav-tabs">
 						  <li class="nav-item">
 							<a class="active nav-link" data-toggle="collapse" href="#collapsePesquisas" aria-expanded="false" aria-controls="collapsePesquisas">Minhas Pesquisas</a>

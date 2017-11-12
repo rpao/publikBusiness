@@ -46,7 +46,9 @@
 			width: 100%;
 		}
 	</style>
-
+	
+	<!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body style = "background-color:silver">
@@ -69,11 +71,11 @@
 	<p style="line-height: 2em">	
 	
 	<center>
-		<a class="btn btn-out-secondary" href="publikBusinessPainel.html">
+		<a class="btn btn-light" href="publikBusinessPainelD.html">
 			Painel
 		</a>
 		 
-		<a id = "descobrir" class="btn btn-out-secondary" data-toggle="collapse" href="#collapseLocal" aria-expanded="false" aria-controls="collapseLocal">
+		<a id = "descobrir" class="btn btn-dark" data-toggle="collapse" href="#collapseLocal" aria-expanded="false" aria-controls="collapseLocal">
 			Descobrir
 		</a>
 		
@@ -170,14 +172,6 @@
 					</div>
 					<div class="py-5 text-center">
 						<div class="row">
-						  <div class="col-md-12 text-center">
-							<h4 id="nome" class="text-center text-capitalize"> </h4>
-							<p class="lead text-secondary text-center" id="endereco"> </p>
-							<p class="lead text-secondary text-center" id="avaliacao"> </p>
-							<i><p class="lead text-center text-center" id="historia"></p></i>
-						  </div>
-						</div>
-						<div class="row">
 						  <div class="col-md-6">
 							<div class="card-body w-100">
 							  <h4 >Nível de Satisfação</h4>
@@ -238,14 +232,65 @@
 					<p style="line-height: 2em">
 					<p style="line-height: 2em">
 					<center>
-						<a class="btn btn-danger" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+						<!--a class="btn btn-danger" data-toggle="collapse" href="#collapseAdotar" aria-expanded="false" aria-controls="collapseAdotar">
 							Adotar
-						</a>
+						</a-->
+						
+						<div class="container">
+						  <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-danger">Adotar</button>
+
+						  <div id="id01" class="modal">
+							<div class="modal-content card-4 animate-zoom" style="max-width:600px">
+								<div class="alert alert-danger" role="alert">
+									<button type="button" onclick="javascript:location.reload()" class="close" data-dismiss="alert" aria-label="Close">×</button>
+									<i><h3 class="alert-heading">Seção em construção.</h3></i>
+									<i><p class="mb-0">Desculpe o incomodo.</p></i>
+								</div>
+							</div>
+						  </div>
+						</div>
 					</center>
 				</div>
 			</div>
 		  </main>
-		</div>	
+		</div>
+		
+		<!--div id="collapseAdotar"  class="collapse">		
+			<div class="card card-body">
+				<div class="w3-container">
+				  <h2>W3.CSS Login Modal</h2>
+				  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Login</button>
+
+				  <div id="id01" class="w3-modal">
+					<div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+					  <div class="w3-center"><br>
+						<span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+						<img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+					  </div>
+
+					  <form class="w3-container" action="/action_page.php">
+						<div class="w3-section">
+						  <label><b>Username</b></label>
+						  <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+						  <label><b>Password</b></label>
+						  <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+						  <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
+						  <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+						</div>
+					  </form>
+
+					  <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+						<button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+						<span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+					  </div>
+
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div-->
+		
 	</center>
 
  	<!-- Import and configure the Firebase SDK -->

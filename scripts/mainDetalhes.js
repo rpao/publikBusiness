@@ -15,11 +15,6 @@
  */
 'use strict';
 
-var geocoder;
-var infoWindow;
-var map;
-var marker;
-
 window.onload = function() {
   window.mainDetalhes = new mainDetalhes();
 };

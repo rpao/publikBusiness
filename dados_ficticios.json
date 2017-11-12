@@ -216,10 +216,12 @@
 		},
 		"empresa":{
 			"e0":{
-				"nome":"Minha Empresa",
+				"nome":"Nike,Inc",
+				"img":"https://tctechcrunch2011.files.wordpress.com/2011/09/nike-logo.jpg?w=400",
 				"cnpj":"0000/0",
 				"endereco":"Av. S N. 10, Recife, Pernambuco",
-				"fone":"(81)3333-3333"
+				"fone":"(81)3333-3333",
+				"locaisAdotados":"id1"
 			}
 		},
 		"pesquisas":{
