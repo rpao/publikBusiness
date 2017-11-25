@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <title>Publik Business</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:600" type="text/css" rel="stylesheet">
+  <link href="styles/estilo.css" type="text/css" rel="stylesheet">
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Friendly Chat">
+  <meta name="theme-color" content="#303F9F">
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Friendly Chat">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+  <!-- Tile icon for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-navbutton-color" content="#303F9F">
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+  <script defer="" src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.min.css"> </head>
+
+<body>
+  <script>
+    function validaSenha (input){
+		if (input.value != document.getElementById('txtSenha').value) {
+		input.setCustomValidity('Repita a senha corretamente');
+	  } else {
+		input.setCustomValidity('');
+	  }
+	}
+  </script>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="container"> <span class="navbar-brand mb-0 h1">Publik Business</span>
+      <a class="navbar-brand text-white" href="/"><i class="fa fa-home fa-home"></i> Inicio </a>
+      <a class="navbar-brand text-white" href="javascript:window.history.go(-1)"><i class="fa fa-arrow-left"></i> Votar </a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+        <div id="user-container">
+          <button hidden="" id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"> Sign-out </button>
+          <button hidden="" id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"> <i class="material-icons">account_circle</i>Sign-in with Google </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="py-5 text-center text-white opaque-overlay gradient-overlay" style="background-image: url(&quot;images/wall_cad2.jpg&quot;);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body bg-light text-secondary">
+              <center>
+                <form id="cadastro-form" action="#">
+                  <p class="alert alert-danger mb-0">(*) Campos obrigatórios</p>
+                  <h5>Dados da Empresa</h5>
+                  <div class="form-group w-75 text-left"> <label>Nome (*)</label>
+                    <input id="nomeEmpresa" type="text" class="form-control" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>CNPJ (*)</label>
+                    <input id="cnpjEmpresa" type="text" class="form-control" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>CEP (*)</label>
+                    <input id="cepEmpresa" type="text" class="form-control" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>Rua (*)</label>
+                    <input id="ruaEmpresa" type="text" class="form-control" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>Número (*)</label>
+                    <input id="numEmpresa" type="text" class="form-control" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>Telefone (*)</label>
+                    <input id="telefoneEmpresa" type="text" class="form-control" required=""> </div>
+                  <h5>Dados do Responsável</h5>
+                  <div class="form-group w-75 text-left"> <label>Nome (*)</label>
+                    <input id="nomeResponsavel" type="text" class="form-control" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>CPF (*)</label>
+                    <input id="cpfResponsavel" type="text" class="form-control" name="cpf" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>Cargo (*)</label>
+                    <input id="cargoResponsavel" type="text" class="form-control" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>Telefone (*)</label>
+                    <input id="telefoneResponsavel" type="text" class="form-control" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>E-mail (*)</label>
+                    <input id="emailResponsavel" type="email" class="form-control" required=""> </div>
+                  <div class="form-group w-75 text-left"> <label>Senha (*)</label>
+                    <input id="txtSenha" type="password" class="form-control" name="senha" required="" title="Senha"> </div>
+                  <div class="form-group w-75 text-left"> <label>Confirmar Senha (*)</label>
+                    <input id="repetir_senha" name="repetir_senha" type="password" required="" class="form-control" title="Repetir Senha" oninput="validaSenha(this)">
+                    <h5 class="text-center">Primeiro Contato</h5>
+                    <div class="form-group w-75 text-left"> <label>Data (*)</label>
+                      <input id="data" type="date" class="form-control" required=""> </div>
+                    <div class="form-group w-75 text-left"> <label>Hora (*)</label>
+                      <input id="hora" type="time" class="form-control" required=""> </div>
+                    <div class="form-group w-75 text-left"> <label>Local (*)</label>
+                      <input id="local" type="text" class="form-control" required=""> </div>
+                    <button id="submit" disabled="" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"> Criar </button>
+                  </div>
+                </form>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Import and configure the Firebase SDK -->
+  <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+  <!-- If you do not want to serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+  <script src="/__/firebase/4.1.3/firebase.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="mainCadastro.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.js"></script>
+</body>
+
+</html>
