@@ -12,7 +12,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <title>Publik Business</title>
+  <title>Publik</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:600" type="text/css" rel="stylesheet">
@@ -41,16 +41,16 @@
 
 <body>
   <script>
-    function validaSenha (input){
-		if (input.value != document.getElementById('txtSenha').value) {
-		input.setCustomValidity('Repita a senha corretamente');
+    function validaEmail (input){		
+		if (input.value != document.getElementById('emailResponsavel').value) {
+		input.setCustomValidity('Repita o e-mail corretamente');
 	  } else {
 		input.setCustomValidity('');
 	  }
 	}
   </script>
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <div class="container"> <span class="navbar-brand mb-0 h1">Publik Business</span>
+    <div class="container"> <span class="navbar-brand mb-0 h1">Publik</span>
       <a class="navbar-brand text-white" href="/"><i class="fa fa-home fa-home"></i> Inicio </a>
       <a class="navbar-brand text-white" href="javascript:window.history.go(-1)"><i class="fa fa-arrow-left"></i> Votar </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,43 +71,46 @@
             <div class="card-body bg-light text-secondary">
               <center>
                 <form id="cadastro-form" action="#">
-                  <p class="alert alert-danger mb-0">(*) Campos obrigatórios</p>
-                  <h5>Dados da Empresa</h5>
-                  <div class="form-group w-75 text-left"> <label>Nome (*)</label>
-                    <input id="nomeEmpresa" type="text" class="form-control" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>CNPJ (*)</label>
-                    <input id="cnpjEmpresa" type="text" class="form-control" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>CEP (*)</label>
-                    <input id="cepEmpresa" type="text" class="form-control" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>Rua (*)</label>
-                    <input id="ruaEmpresa" type="text" class="form-control" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>Número (*)</label>
-                    <input id="numEmpresa" type="text" class="form-control" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>Telefone (*)</label>
-                    <input id="telefoneEmpresa" type="text" class="form-control" required=""> </div>
-                  <h5>Dados do Responsável</h5>
-                  <div class="form-group w-75 text-left"> <label>Nome (*)</label>
-                    <input id="nomeResponsavel" type="text" class="form-control" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>CPF (*)</label>
-                    <input id="cpfResponsavel" type="text" class="form-control" name="cpf" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>Cargo (*)</label>
-                    <input id="cargoResponsavel" type="text" class="form-control" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>Telefone (*)</label>
-                    <input id="telefoneResponsavel" type="text" class="form-control" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>E-mail (*)</label>
-                    <input id="emailResponsavel" type="email" class="form-control" required=""> </div>
-                  <div class="form-group w-75 text-left"> <label>Senha (*)</label>
-                    <input id="txtSenha" type="password" class="form-control" name="senha" required="" title="Senha"> </div>
-                  <div class="form-group w-75 text-left"> <label>Confirmar Senha (*)</label>
-                    <input id="repetir_senha" name="repetir_senha" type="password" required="" class="form-control" title="Repetir Senha" oninput="validaSenha(this)">
-                    <h5 class="text-center">Primeiro Contato</h5>
-                    <div class="form-group w-75 text-left"> <label>Data (*)</label>
-                      <input id="data" type="date" class="form-control" required=""> </div>
-                    <div class="form-group w-75 text-left"> <label>Hora (*)</label>
-                      <input id="hora" type="time" class="form-control" required=""> </div>
-                    <div class="form-group w-75 text-left"> <label>Local (*)</label>
-                      <input id="local" type="text" class="form-control" required=""> </div>
-                    <button id="submit" disabled="" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"> Criar </button>
+					<a class="alert alert-danger mb-0">(*) Campos obrigatórios</a>
+					
+					<a href="https://www.recife.pe.gov.br/pr/servicospublicos/emlurb/ProgramaAdoteVerde.pdf" download class="alert alert-warning mb-0">Clique aqui para o download da Cartilha do programa Adote o Verde</a>
+					
+					<h5>Dados da Empresa</h5>
+					<div class="form-group w-75 text-left"> <label>Nome (*)</label>
+					<input id="nomeEmpresa" type="text" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>CNPJ (*)</label>
+					<input id="cnpjEmpresa" type="text" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>CEP (*)</label>
+					<input id="cepEmpresa" type="text" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>Rua (*)</label>
+					<input id="ruaEmpresa" type="text" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>Número (*)</label>
+					<input id="numEmpresa" type="text" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>Telefone (*)</label>
+					<input id="telefoneEmpresa" type="text" class="form-control" required=""> </div>
+
+					<h5>Dados do Responsável</h5>
+					<div class="form-group w-75 text-left"> <label>Nome (*)</label>
+					<input id="nomeResponsavel" type="text" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>CPF (*)</label>
+					<input id="cpfResponsavel" type="text" class="form-control" name="cpf" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>Cargo (*)</label>
+					<input id="cargoResponsavel" type="text" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>Telefone (*)</label>
+					<input id="telefoneResponsavel" type="text" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>E-mail (*)</label>
+					<input id="emailResponsavel" type="email" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>Confirmar E-mail (*)</label>
+					<input id="repetir_email" name="repetir_email" type="email" required="" class="form-control" title="Repetir Email" oninput="validaEmail(this)">
+
+					<h5 class="text-center">Marcar Contato</h5>
+					<div class="form-group w-75 text-left"> <label>Data (*)</label>
+					<input id="data" type="date" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>Hora (*)</label>
+					<input id="hora" type="time" class="form-control" required=""> </div>
+					<div class="form-group w-75 text-left"> <label>Local (*)</label>
+					<input id="local" type="text" class="form-control" required=""> </div>
+					<button id="submit" disabled="" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"> Cadastrar </button>
                   </div>
                 </form>
               </center>

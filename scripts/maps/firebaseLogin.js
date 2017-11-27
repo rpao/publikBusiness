@@ -101,21 +101,6 @@ FriendlyChat.prototype.requestNotificationsPermissions = function() {
   });
 };
 
-FriendlyChat.prototype.novosUsersChart = function(mediaMensal){
-	new Chartist.Pie(
-		'#chartNovosUsuariosMensal', 
-		{
-			series: [mediaMensal]
-		},
-		{
-		  donut: true,
-		  donutWidth: 60,
-		  startAngle: 270,
-		  total: 200,
-		  showLabel: true
-		}
-	);
-};
 // Checks that the Firebase SDK has been correctly setup and configured.
 FriendlyChat.prototype.checkSetup = function() {
   if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {

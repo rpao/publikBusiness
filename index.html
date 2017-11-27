@@ -12,7 +12,7 @@
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:600" type="text/css" rel="stylesheet" />
   <link href="styles/estilo.css" type="text/css" rel="stylesheet" />
     
-  <title>PublikBusiness</title>
+  <title>Publik</title>
   
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
@@ -44,8 +44,8 @@
   <!-- bara superior -->
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 	<div class="container">
-	  <span class="navbar-brand mb-0 h1">Publik Business</span>
-	  <a class="navbar-brand text-white" href="publikBusinessPainel.html"> Painel </a>
+	  <span class="navbar-brand mb-0 h1">Publik </span>
+	  <a class="navbar-brand text-white" href="publikPainel.html"> Painel </a>
 	  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
 	  <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
 		<div id="user-container">
@@ -56,27 +56,105 @@
 	</div>
   </nav>
   
-  <div class="py-5">
+  <div class="py-5 bg-light">
     <div class="container">
-	  <div id="apresentacao">
-	    <form  class="form-inline" method="post" action="index.html">    
-		  <fieldset> 
-			<div class="campos">
-				<input type="text"  class="form-control" value="Endereço..." id="txtEndereco" name="txtEndereco" />
-				<input type="button" class="btn btn-outline-success" value="Buscar" id="btnEndereco" name="btnEndereco" />
-				<a href="publikBusinessDescobrir.html" class="btn btn-outline-success">Visitar</a>
-			</div>
-
-			<div id="map-canvas"></div>
-
-			<input type="hidden" id="txtLatitude" name="txtLatitude" />
-			<input type="hidden" id="txtLongitude" name="txtLongitude" />
-		  </fieldset>
+      <div class="row text-center">
+	  <form id="busca-form">
+        <div class="col-md-12">
+          <h1 class="mb-4 text-primary">Critérios de Busca</h1>
+          <p class="lead">Selecione a baixo os críterios de busca.</p>
+          <div class="row text-left mt-5">
+            <div class="col-md-4 my-3">
+              <div class="row mb-3">
+                <div class="text-center col-2"><i class="d-block mx-auto fa fa-3x fa-child"></i></div>
+                <div class="align-self-center col-10">
+                  <h5 class="text-secondary"><b>Faixa etária</b></h5>
+                </div>
+              </div>
+              <p style="line-height: 2em;"> <label class="custom-control custom-checkbox">
+                  <input class="custom-control-input" value="on" id="faixaEtaria0" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description"> 0 - 12 anos</span>
+                </label> <label class="custom-control custom-checkbox">
+                  <input class="custom-control-input" value="on" id="faixaEtaria1" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description"> 13 - 17 anos</span>
+                </label> <label class="custom-control custom-checkbox">
+                  <input class="custom-control-input" value="on" id="faixaEtaria2" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description"> 18 - 25 anos</span>
+                </label> <label class="custom-control custom-checkbox">
+                  <input class="custom-control-input" value="on" id="faixaEtaria3" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description"> 26 - 39 anos</span>
+                </label> <label class="custom-control custom-checkbox">
+                  <input class="custom-control-input" value="on" id="faixaEtaria4" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description"> 40 - 55 anos</span>
+                </label> <label class="custom-control custom-checkbox">
+                  <input class="custom-control-input" value="on" id="faixaEtaria5" type="checkbox">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description"> acima de 55 anos</span>
+                </label> </p>
+            </div>
+            <div class="col-md-4 my-3">
+              <div class="row mb-3">
+                <div class="text-center col-2"><i class="d-block mx-auto fa fa-3x fa-users"></i></div>
+                <div class="align-self-center col-10">
+                  <h5 class="text-secondary"><b>  Horário de Maior Fluxo de Pessoas</b></h5>
+                </div>
+              </div> <label class="custom-control custom-checkbox">
+                <input class="custom-control-input" value="on" id="fluxoManha" type="checkbox">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Manhã</span>
+              </label> <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" value="on" id="fluxoTarde">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Tarde</span>
+              </label> <label class="custom-control custom-checkbox">
+                <input class="custom-control-input" value="on" id="fluxoNoite" type="checkbox">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Noite</span>
+              </label> </div>
+            <div class="col-md-4 my-3">
+              <div class="row mb-3">
+                <div class="text-center col-2"><i class="d-block mx-auto fa fa-3x fa-map-marker"></i></div>
+                <div class="align-self-center col-10">
+                  <h5 class="text-secondary"><b>Características do Local</b></h5>
+                </div>
+              </div> <label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" value="on" id="muitoArborizado">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Muito Arborizado</span>
+              </label><label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" value="on" id="poucoArborizado">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Pouco Arborizado</span>
+              </label><label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" value="on" id="proximidadeCentro">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Próximo ao centro</span>
+              </label><label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" value="on" id="altoFluxoCarro">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Alto Fluxo de Carros nas Proximidades</span>
+              </label><label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" value="on" id="brinquedosInfantis">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Brinquedos Infantis</span>
+              </label><label class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" value="on" id="praticaEsportes">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Propício a prática de esportes</span>
+              </label> </div>
+          </div>
+          <a href="#" id="btnBuscar" class="btn btn-outline-primary">Buscar</a>
+        </div>
 	    </form>
-	  </div>
+      </div>
     </div>
   </div>
-
+  
 	<!-- Import and configure the Firebase SDK -->
 	<!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
 	<!-- If you do not want to serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->

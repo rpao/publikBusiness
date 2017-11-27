@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 'use strict';
-var listaEmpresas = [];
+
 var nomeEmpresa;
 
 // Initializes mainPesquisas.
@@ -22,7 +22,6 @@ function mainPesquisas() {
   this.checkSetup();
 
   // Shortcuts to DOM Elements.
-  // this.messageList = document.getElementById('messages');
   this.signInButton = document.getElementById('sign-in');
   this.signOutButton = document.getElementById('sign-out');
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
@@ -31,47 +30,21 @@ function mainPesquisas() {
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
   this.signInButton.addEventListener('click', this.signIn.bind(this));
   
-  this.messageForm = document.getElementById('cadastro-form');
-  this.nomeEmpresa = document.getElementById('nomeEmpresa');
-  this.cepEmpresa = document.getElementById('cepEmpresa');
-  this.ruaEmpresa = document.getElementById('ruaEmpresa');
-  this.numEmpresa = document.getElementById('numEmpresa');
-  this.cnpjEmpresa = document.getElementById('cnpjEmpresa');
-  this.telefoneEmpresa = document.getElementById('telefoneEmpresa');
-  
-  this.nomeResponsavel = document.getElementById('nomeResponsavel');
-  this.telefone_responsavel = document.getElementById('telefoneResponsavel');
-  this.cpfResponsavel = document.getElementById('cpfResponsavel');
-  this.cargoResponsavel = document.getElementById('cargoResponsavel');
-  this.emailResponsavel = document.getElementById('emailResponsavel');
-  this.conf_emailResponsavel = document.getElementById('repetir_email');
-  
-  this.data_Contato = document.getElementById('data');
-  this.hora_Contato = document.getElementById('hora');
-  this.local_Contato = document.getElementById('local');
-  
-  this.submitButton = document.getElementById('submit');
-  
-  // Saves message on form submit.
-  this.messageForm.addEventListener('submit', this.saveMessage.bind(this));
-  
-  // Toggle for the button.
-  var buttonTogglingHandler = this.toggleButton.bind(this);
-  this.nomeEmpresa.addEventListener('keyup', buttonTogglingHandler);
-  this.nomeEmpresa.addEventListener('change', buttonTogglingHandler);
-
+  this.filtroSpan = document.getElementById('filtros');
   
   this.signInButton = document.getElementById('sign-in');
   this.signOutButton = document.getElementById('sign-out');
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
-
+  
+  this.displayFiltros();
+  
   this.initFirebase();
 }
 
 // Enables or disables the submit button depending on the values of the input
 // fields.
 mainPesquisas.prototype.toggleButton = function() {
-  if (this.nomeEmpresa.value) {
+  if (this.messageInput.value) {
     this.submitButton.removeAttribute('disabled');
   } else {
     this.submitButton.setAttribute('disabled', 'true');
@@ -128,7 +101,7 @@ mainPesquisas.prototype.onAuthStateChanged = function(user) {
     this.signInButton.setAttribute('hidden', 'true');
 
     // We load currently existing chant messages.
-    //this.loadPesquisas();
+    this.loadPesquisas();
 	
     // We save the Firebase Messaging Device token and enable notifications.
     this.saveMessagingDeviceToken();
@@ -139,7 +112,6 @@ mainPesquisas.prototype.onAuthStateChanged = function(user) {
     // Show sign-in button.
     this.signInButton.removeAttribute('hidden');
   }
-  this.loadPesquisas();
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
@@ -172,7 +144,7 @@ mainPesquisas.prototype.requestNotificationsPermissions = function() {
 // Enables or disables the submit button depending on the values of the input
 // fields.
 mainPesquisas.prototype.toggleButton = function() {
-  if (this.nomeEmpresa.value) {
+  if (this.messageInput.value) {
     this.submitButton.removeAttribute('disabled');
   } else {
     this.submitButton.setAttribute('disabled', 'true');
@@ -212,70 +184,72 @@ mainPesquisas.prototype.saveMessagingDeviceToken = function() {
 // Saves a new message on the Firebase DB.
 mainPesquisas.prototype.saveMessage = function(e) {
   e.preventDefault();
-  if (listaEmpresas.indexOf(this.cnpjEmpresa.value) == -1){
-	  // Check that the user entered a message and is signed in.
-	  if (this.nomeEmpresa.value){// && this.checkSignedInWithMessage()) {
-		var currentUser = this.auth.currentUser;
+  // Check that the user entered a message and is signed in.
+  if (this.messageInput.value && this.checkSignedInWithMessage()) {
+    var currentUser = this.auth.currentUser;
 
-		// Add a new message entry to the Firebase Database.
-		this.messagesRef.push({
-		  cnpj:this.cnpjEmpresa.value,
-		  empresa: this.nomeEmpresa.value,
-		  endereco: this.ruaEmpresa.value+","+this.numEmpresa.value+"-"+this.cepEmpresa.value,
-		  telefone: this.telefoneEmpresa.value,
-		  responsavel: this.nomeResponsavel.value,
-		  cpf: this.cpfResponsavel.value,
-		  cargo: this.cargoResponsavel.value,
-		  telefoneResponsavel: this.telefone_responsavel.value,
-		  email: this.emailResponsavel.value,
-		  dataHoraContato: this.data_Contato.value+";"+this.hora_Contato.value,
-		  localContato:this.local_Contato.value,
-		  status:"em processamento",
-		  dataCadastro:"01/11/2017"
-		}).then(function() {
-		  // Clear message text field and SEND button state.
-		  this.toggleButton();
-		}.bind(this)).catch(function(error) {
-		  console.error('Error writing new message to Firebase Database', error);
-		});
-	  }
-
-	document.getElementById('cadastro-form').value = '';
-	document.getElementById('nomeEmpresa').value = '';
-	document.getElementById('cepEmpresa').value = '';
-	document.getElementById('ruaEmpresa').value = '';
-	document.getElementById('numEmpresa').value = '';
-	document.getElementById('cnpjEmpresa').value = '';
-	document.getElementById('telefoneEmpresa').value = '';
-
-	document.getElementById('nomeResponsavel').value = '';
-	document.getElementById('telefoneResponsavel').value = '';
-	document.getElementById('cpfResponsavel').value = '';
-	document.getElementById('cargoResponsavel').value = '';
-	document.getElementById('emailResponsavel').value = '';
-	document.getElementById('repetir_email').value = '';
-
-	document.getElementById('data').value = '';
-	document.getElementById('hora').value = '';
-	document.getElementById('local').value = '';	  
-  }else{
-	//alert("CNPJ j? consta entre as empresas cadastradas.");
-	cnpjEmpresa.setCustomValidity('CNPJ existe entre as empresas cadastradas.');
+    // Add a new message entry to the Firebase Database.
+    this.messagesRef.push({
+      empresa: currentUser.displayName,
+	  escolhas: this.opcaoInput.value,
+      pergunta: this.messageInput.value,
+	  respostas:"",
+	  usuarios:"",
+	  status:"open",
+	  dataCriacao:"01/11/2017"
+    }).then(function() {
+      // Clear message text field and SEND button state.
+      this.toggleButton();
+    }.bind(this)).catch(function(error) {
+      console.error('Error writing new message to Firebase Database', error);
+    });
   }
+  document.getElementById('pergunta').value=''; // Limpa o campo
+  document.getElementById('opcoes').value=''; // Limpa o campo
 };
 
 // Loads chat messages history and listens for upcoming ones.
 mainPesquisas.prototype.loadPesquisas = function() {
   // Reference to the /messages/ database path.
-  this.messagesRef = this.database.ref('publik/empresa');
+  this.messagesRef = this.database.ref('publik/pesquisas');
   // Make sure we remove all previous listeners.
   this.messagesRef.off();
   // Loads the last 12 messages and listen for new ones.
   var setMessage = function(data) {
+	var nomeEmpresa = "Nike,Inc";
     var val = data.val();
-	listaEmpresas[listaEmpresas.length] = val.cnpj;
   }.bind(this);
   
   this.messagesRef.on('child_added', setMessage);
   this.messagesRef.on('child_changed', setMessage);
+};
+
+// Displays a Message in the UI.
+mainPesquisas.prototype.displayFiltros = function() {
+	var filtros = "Faixa etária entre 0-10 anos, Muito Arborizado, Alto fluxo de Pessoas pela tarde.";
+	
+	var div = document.getElementById("listaFiltros");
+	
+	// If an element for that message does not exists yet we create it.
+	if (!div) {
+		var container = document.createElement('div');	
+		container.innerHTML = '<div class="card-header bg-white">'+
+		'	<div class="message-container">' +
+		'	<div class="spacing"><div class="pic"></div></div>' +
+		'	<form >'+
+		'		<p class="filtro lead"></p>'+
+		'	</form>'+
+		'</div>';
+
+		div = container.firstChild;
+		div.setAttribute('id', key);
+		this.filtroSpan.appendChild(div);
+	}
+
+	div.querySelector('.filtro').textContent = "Locais com: "+filtros;
+
+	// Show the card fading-in and scroll to view the new message.
+	setTimeout(function() {div.classList.add('visible')}, 1);
+
+	this.filtroSpan.scrollTop = this.filtroSpan.scrollHeight;
 };
