@@ -1,26 +1,19 @@
 /**
-***  Main Cadastro - Utilizada por cadastro.html
+***  Main Cadastro Key - Utilizada por cadastroKey.html
 ***  Acessa o banco de dados e verifica se a empresa que está solicitando uma key já está cadastradas
 ***  caso nao, efetua o cadastro na base de dados como uma empresa que está solicitando uma key.
 **/
 'use strict';
 
-var listaLocais = [];
-var listaNomesL = [];
 var listaEmpresas = [];
 
-var url = location.href;
-var query = url.split("=");
-var localID = query[1];
-	
 window.onload = function() {
-  window.mainCadastro = new mainCadastro();
+  window.mainPesquisas = new mainPesquisas();
 };
 
-// Initializes mainCadastro.
-function mainCadastro() {
+// Initializes mainPesquisas.
+function mainPesquisas() {
   this.checkSetup();
-  
   // Elementos do html - inputs do cadastro
   this.messageForm = document.getElementById('cadastro-form');
   this.nomeEmpresa = document.getElementById('nomeEmpresa');
@@ -57,7 +50,7 @@ function mainCadastro() {
 
 // Enables or disables the submit button depending on the values of the input
 // fields.
-mainCadastro.prototype.toggleButton = function() {
+mainPesquisas.prototype.toggleButton = function() {
   if (this.nomeEmpresa.value) {
     this.submitButton.removeAttribute('disabled');
   } else {
@@ -66,7 +59,7 @@ mainCadastro.prototype.toggleButton = function() {
 };
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
-mainCadastro.prototype.initFirebase = function() {
+mainPesquisas.prototype.initFirebase = function() {
   // Shortcuts to Firebase SDK features.
   this.auth = firebase.auth();
   this.database = firebase.database();
@@ -76,12 +69,12 @@ mainCadastro.prototype.initFirebase = function() {
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
-mainCadastro.prototype.onAuthStateChanged = function(user) {
-  this.loadLocais(); // acessa o BD
+mainPesquisas.prototype.onAuthStateChanged = function(user) {
+  this.loadEmpresas(); // acessa o BD
 };
 
 // Checks that the Firebase SDK has been correctly setup and configured.
-mainCadastro.prototype.checkSetup = function() {
+mainPesquisas.prototype.checkSetup = function() {
   if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
     window.alert('You have not configured and imported the Firebase SDK. ' +
         'Make sure you go through the codelab setup instructions and make ' +
@@ -90,20 +83,15 @@ mainCadastro.prototype.checkSetup = function() {
 };
 
 // Saves a new message on the Firebase DB.
-mainCadastro.prototype.saveMessage = function(e) {
+mainPesquisas.prototype.saveMessage = function(e) {
   e.preventDefault();
-  
-  var index = listaLocais.indexOf(localID);
-  if (index == -1){
-	  alert("Ocorreu um erro... Redirecionando");
-  }
-  else if (listaEmpresas[index] == 0){
+  if (listaEmpresas.indexOf(this.cnpjEmpresa.value) == -1){
 	  // Check that the user entered a message and is signed in.
 	  if (this.nomeEmpresa.value){
 		var currentUser = this.auth.currentUser;
 
 		// Add a new message entry to the Firebase Database.
-		this.empresaRef.push({
+		this.messagesRef.push({
 		  cnpj:this.cnpjEmpresa.value,
 		  empresa: this.nomeEmpresa.value,
 		  endereco: this.ruaEmpresa.value+","+this.numEmpresa.value+"-"+this.cepEmpresa.value,
@@ -115,8 +103,7 @@ mainCadastro.prototype.saveMessage = function(e) {
 		  email: this.emailResponsavel.value,
 		  dataHoraContato: this.data_Contato.value+";"+this.hora_Contato.value,
 		  localContato:this.local_Contato.value,
-		  localSolicitado: localID,
-		  tipoCadastro:"Adocao",
+		  tipoCadastro:"Busca",
 		  status:"em processamento",
 		  dataCadastro:"01/11/2017"
 		}).then(function() {
@@ -144,29 +131,23 @@ mainCadastro.prototype.saveMessage = function(e) {
 
 	document.getElementById('data').value = '';
 	document.getElementById('hora').value = '';
-	document.getElementById('local').value = '';
-	
-	alert("Cadastro efetuado, entraremos em contato em breve.");
+	document.getElementById('local').value = '';	  
   }else{
-	alert(listaNomesL[index] + ' já foi adotado. Obrigado.');
-	//cnpjEmpresa.setCustomValidity('Local já foi adotado. Obrigado.');
+	//alert("CNPJ j? consta entre as empresas cadastradas.");
+	cnpjEmpresa.setCustomValidity('CNPJ existe entre as empresas cadastradas. Se deseja alterar seu nível de acesso, vá nas configuraçoes de sua conta. Obrigado.');
   }
 };
 
 // Loads chat messages history and listens for upcoming ones.
-mainCadastro.prototype.loadLocais = function() {
+mainPesquisas.prototype.loadEmpresas = function() {
   // Reference to the /messages/ database path.
-  this.empresaRef = this.database.ref('publik/empresa');
-  this.messagesRef = this.database.ref('publik/locais');
+  this.messagesRef = this.database.ref('publik/empresa');
   // Make sure we remove all previous listeners.
-  this.empresaRef.off();
   this.messagesRef.off();
   // Loads the last 12 messages and listen for new ones.
   var setMessage = function(data) {
     var val = data.val();
-	listaLocais[listaLocais.length] = data.key;
-	listaNomesL[listaNomesL.length] = val.nome;
-	listaEmpresas[listaEmpresas.length] = val.empresa_adotante;
+	listaEmpresas[listaEmpresas.length] = val.cnpj;
   }.bind(this);
   
   this.messagesRef.on('child_added', setMessage);
