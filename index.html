@@ -2,25 +2,127 @@
 <html>
 
 <head>
+  <title>Publik</title>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css"> </head>
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:600" type="text/css" rel="stylesheet">
+  <link href="styles/estilo.css" type="text/css" rel="stylesheet">
+  
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Friendly Chat">
+  <meta name="theme-color" content="#303F9F">
+  
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Friendly Chat">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+  
+  <!-- Tile icon for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-navbutton-color" content="#303F9F">
+  
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+  <script defer="" src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.min.css">
+</head>
 
 <body>
   <script>
     function validaKey(){
-    		var inputKey = document.getElementById('key');		
-    		var listaKey = ['asd10di', 'k12udjkl', 'doaks20j'];	
-    		
-    		if (listaKey.indexOf(inputKey.value) != -1) {
-    		  window.location.href = "buscar.html?id="+inputKey.value;
-    		}else{
-    		  alert('Key Inválida');
-    		  inputKey.value = "";
-    		}
-    	}
+	    var xhttp = new XMLHttpRequest();
+		
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				verificaKey(this);
+			}
+		};
+		
+		xhttp.open("GET", "keys_busca.xml", true);
+		xhttp.send();
+	}
+	function verificaKey(xml){
+		var	keys = [];
+		var xmlDoc = xml.responseXML;
+		
+		for (var i = 0; i < xmlDoc.getElementsByTagName("key").length; i++){
+			keys[keys.length] = xmlDoc.getElementsByTagName("key")[i].firstChild.nodeValue;
+		}
+		
+		var inputKey = document.getElementById('key');
+		
+		if (keys.indexOf(inputKey.value) != -1) {
+		  window.location.href = "buscar.html?id="+inputKey.value;
+		}else{
+		  alert('Key Inválida');
+		  inputKey.value = "";
+		}
+	}
+	
+	function validaLogin(){
+		var xhttp = new XMLHttpRequest();
+		
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				verificacaoLogin(this);
+			}
+		};
+		xhttp.open("GET", "dados_login.xml", true);
+		xhttp.send();
+	}
+
+	function verificacaoLogin(xml){
+		var	ids = [];
+		var senhas = [];
+		var xmlDoc = xml.responseXML;
+		
+		var inputID = document.getElementById('id').value;
+		var inputSenha = document.getElementById('senha').value;
+		
+		for (var i = 0; i < xmlDoc.getElementsByTagName("ID").length; i++){
+			ids[ids.length] = xmlDoc.getElementsByTagName("ID")[i].firstChild.nodeValue;
+		}
+		
+		for (var i = 0; i < xmlDoc.getElementsByTagName("senha").length; i++){
+			senhas[senhas.length] = xmlDoc.getElementsByTagName("senha")[i].firstChild.nodeValue;
+		}
+		
+		if (inputID == "" || inputSenha == ""){
+			alert("Todos os campos devem ser preechidos");
+		}else{
+			var indexID = ids.indexOf(inputID);
+			var indexSenha = senhas.indexOf(inputSenha);
+			
+			if (indexID != -1 && indexSenha != -1){
+				window.location.href = "painel.html?id="+inputID;
+			}else{
+				alert("Campo(s) Incorreto(s)");
+				document.getElementById('id').value = "";
+				document.getElementById('senha').value = "";
+			}
+		}
+	}
   </script>
+  
   <nav class="navbar navbar-expand-md bg-light navbar-light">
     <div class="container">
       <div class="col-md-5 align-self-center">
@@ -34,6 +136,9 @@
           <li class="nav-item">
             <a class="btn text-dark btn-outline-primary border border-light" onclick="document.getElementById('id01').style.display='block'"><i class="fa d-inline fa-lg fa-neuter"></i> Buscar Locais</a>
           </li>
+		  <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" onclick="document.getElementById('id02').style.display='block'"><i class="fa d-inline fa-lg fa-sign-in"></i> Login</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -45,6 +150,7 @@
       </div>
     </div>
   </nav>
+  
   <div class="py-5">
     <div id="id01" class="modal">
       <div class="modal-dialog" role="document">
@@ -58,7 +164,6 @@
             <div class="form-group w-75"> <span id="errorKey"></span> </div>
             <div class="form-group w-75">
               <input id="key" type="text" class="form-control" required="" name="key" title="Inserir Key">
-              <!--input id="key" name="key" type="text" required="" class="form-control" title="Inserir Key" oninput="validaKey()"-->
             </div>
           </center>
           <div class="modal-footer">
@@ -68,6 +173,37 @@
         </div>
       </div>
     </div>
+	
+	<div id="id02" class="modal bg-dark">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- card-4 animate-zoom" style="max-width:600px"-->
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fa d-inline fa-lg fa-sign-in"></i> Login</a></h5>
+          </div>
+          <center>
+            <br>
+            <div class="form-group w-75"> <span id="errorKey"></span> </div>
+            <div class="form-group w-75">
+				<div class="form-group w-75 text-left"> 
+				  <label>ID (*)</label>
+				  <input id="id" type="text" class="form-control" required="" name="id" title="Inserir ID">
+				</div>
+				<div class="form-group w-75 text-left"> 
+				  <label>Senha (*)</label>
+				  <input id="senha" type="password" class="form-control" required="" name="senha" title="Inserir Senha">
+				</div>		
+            </div>
+          </center>
+          <div class="modal-footer">
+            <!--a  id = "submit" class="btn btn-outline-primary">Continuar</a-->
+			<a  id = "submit" onclick = validaLogin()  class="btn btn-outline-primary">Continuar</a>
+            <a class="btn btn-outline-danger" onclick="javascript:location.reload()">Cancelar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+	
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-7">

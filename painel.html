@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+  <title>Publik </title>
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Friendly Chat">
+  <meta name="theme-color" content="#303F9F">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Friendly Chat">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F"> </head>
+
+<body>
+  <script>
+    function validaKey(){
+	    var xhttp = new XMLHttpRequest();
+		
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				verificaKey(this);
+			}
+		};
+		
+		xhttp.open("GET", "keys_busca.xml", true);
+		xhttp.send();
+	}
+	function verificaKey(xml){
+		var	keys = [];
+		var xmlDoc = xml.responseXML;
+		
+		for (var i = 0; i < xmlDoc.getElementsByTagName("key").length; i++){
+			keys[keys.length] = xmlDoc.getElementsByTagName("key")[i].firstChild.nodeValue;
+		}
+		
+		var inputKey = document.getElementById('key');
+		
+		if (keys.indexOf(inputKey.value) != -1) {
+		  window.location.href = "buscar.html?id="+inputKey.value;
+		}else{
+		  alert('Key Inválida');
+		  inputKey.value = "";
+		}
+	}
+  </script>
+  <nav class="navbar navbar-expand-md bg-light navbar-light">
+    <div class="container">
+      <div class="col-md-5 align-self-center">
+        <img class="img-fluid w-25" src="images/publikLogo.png"> </div>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" href="cadastroKey.html"><i class="fa d-inline fa-lg fa-key"></i> Obter Key</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" onclick="document.getElementById('id01').style.display='block'"><i class="fa d-inline fa-lg fa-neuter"></i> Buscar Locais</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" href="/"><i class="fa d-inline fa-lg fa-sign-out"></i> Sair</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"> </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="py-5">
+    <div id="id01" class="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- card-4 animate-zoom" style="max-width:600px"-->
+          <div class="modal-header">
+            <h5 class="modal-title">Insira Key de Busca</h5>
+          </div>
+          <center>
+            <br>
+            <div class="form-group w-75"> <span id="errorKey"></span> </div>
+            <div class="form-group w-75">
+              <input id="key" type="text" class="form-control" required="" name="key" title="Inserir Key">
+              <!--input id="key" name="key" type="text" required="" class="form-control" title="Inserir Key" oninput="validaKey()"-->
+            </div>
+          </center>
+          <div class="modal-footer">
+            <a onclick="validaKey()" class="btn btn-outline-primary">Continuar</a>
+            <a class="btn btn-outline-danger" onclick="javascript:location.reload()">Cancelar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-light text-dark">
+          <h4 class="text-secondary"><i class="fa d-inline fa-lg fa-spinner"></i><a id="emp_nome"></a></h4>
+        </div>
+        <div class="card-body text-dark">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td class="text-muted w-25">CNPJ:</td>
+                <td id="emp_cnpj"></td>
+              </tr>
+              <tr>
+                <td class="text-muted w-25">Endereço:</td>
+                <td id="emp_endereco"></td>
+              </tr>
+              <tr>
+                <td class="text-muted w-25">Telefone(s):</td>
+                <td id="emp_telefone"></td>
+              </tr>
+              <tr>
+                <td class="text-muted w-25">Cadastro:</td>
+                <td id="status_cad"></td>
+              </tr>
+              <tr>
+                <td class="text-muted w-25">Data de Cadastro:</td>
+                <td id="data_cad"></td>
+              </tr>
+              <tr>
+                <td class="text-secondary w-25 bg-light"><i class="fa d-inline fa-lg fa-user"></i> Responsável</td>
+                <td class="table-active bg-light"></td>
+              </tr>
+              <tr>
+                <td class="text-muted w-25">Nome:</td>
+                <td id="resp_nome"></td>
+              </tr>
+              <tr>
+                <td class="text-muted w-25">CPF:</td>
+                <td id="resp_cpf"></td>
+              </tr>
+              <tr>
+                <td class="text-muted w-25">Cargo:</td>
+                <td id="resp_cargo"></td>
+              </tr>
+              <tr>
+                <td class="text-muted w-25">Email:</td>
+                <td id="resp_email"></td>
+              </tr>
+              <tr>
+                <td class="text-muted w-25">Telefone(s):</td>
+                <td id="resp_telefone"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-12">
+    <div class="card">
+      <div id="adocoes"><span></span></div>
+    </div>
+  </div>
+  
+  <p style="line-height: 2em">
+  <p style="line-height: 2em">
+	
+  <div class="bg-light text-dark">
+    <div class="container">
+      <div class="row">
+        <div class="align-self-center col-md-9">
+          <img class="img-fluid w-100" src="images/publikFoot.png"> </div>
+        <div class="p-4 col-md-3">
+          <h2 class="mb-4 text-dark">Mapsite</h2>
+          <ul class="list-unstyled">
+            <a href="/" class="text-secondary">Home</a>
+            <br>
+            <a href="sobrePublik.html" class="text-secondary">Nossos serviços</a>
+            <br>
+            <a href="cadastroKey.html" class="text-secondary">Obter uma Key de Busca</a>
+            <br>
+            <a href="sobreAdoteVerde.html" class="text-secondary">Programa Adote o Verde</a>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <p class="text-center">© Copyright 2017 Publik - All rights reserved. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Import and configure the Firebase SDK -->
+  <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+  <!-- If you do not want to serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+  <script src="/__/firebase/4.1.3/firebase.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="scripts/mainPainel.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+
+</html>

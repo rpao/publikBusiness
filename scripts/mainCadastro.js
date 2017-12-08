@@ -97,7 +97,7 @@ mainCadastro.prototype.saveMessage = function(e) {
   if (index == -1){
 	  alert("Ocorreu um erro... Redirecionando");
   }
-  else if (listaEmpresas[index] == 0){
+  else{
 	  // Check that the user entered a message and is signed in.
 	  if (this.nomeEmpresa.value){
 		var currentUser = this.auth.currentUser;
@@ -147,10 +147,8 @@ mainCadastro.prototype.saveMessage = function(e) {
 	document.getElementById('local').value = '';
 	
 	alert("Cadastro efetuado, entraremos em contato em breve.");
-  }else{
-	alert(listaNomesL[index] + ' já foi adotado. Obrigado.');
-	//cnpjEmpresa.setCustomValidity('Local já foi adotado. Obrigado.');
   }
+  window.location.href = "/";
 };
 
 // Loads chat messages history and listens for upcoming ones.
