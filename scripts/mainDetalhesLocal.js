@@ -102,7 +102,6 @@ mainDetalhes.prototype.displayLocal = function(nome, endereco, avaliacao, histor
 	this.nivelSatisChart(taxa.nivelSats);
 	this.classeSocialChart(taxa.classeSocial.A, taxa.classeSocial.B, taxa.classeSocial.C, taxa.classeSocial.D, taxa.classeSocial.E);
 	this.faixaEtariaChart(taxa.faixaEtaria.id0,taxa.faixaEtaria.id1,taxa.faixaEtaria.id2,taxa.faixaEtaria.id3,taxa.faixaEtaria.id4,taxa.faixaEtaria.id5);
-	this.plataformaChart(taxa.plataforma.ios, taxa.plataforma.android, taxa.plataforma.outros);
 	this.freqMensalChart(taxa.freq_mensal.jan, taxa.freq_mensal.fev, taxa.freq_mensal.mar, taxa.freq_mensal.abr, taxa.freq_mensal.mai, taxa.freq_mensal.jun, taxa.freq_mensal.jul, taxa.freq_mensal.ago, taxa.freq_mensal.set, taxa.freq_mensal.out, taxa.freq_mensal.nov, taxa.freq_mensal.dez);
 	this.freqDiariaChart(taxa.freq_diaria.dia1,taxa.freq_diaria.dia2,taxa.freq_diaria.dia3,taxa.freq_diaria.dia4,taxa.freq_diaria.dia5,taxa.freq_diaria.dia6,taxa.freq_diaria.dia7,taxa.freq_diaria.dia8,taxa.freq_diaria.dia9,taxa.freq_diaria.dia10,taxa.freq_diaria.dia11,taxa.freq_diaria.dia12,taxa.freq_diaria.dia13,taxa.freq_diaria.dia14,taxa.freq_diaria.dia15,taxa.freq_diaria.dia16,taxa.freq_diaria.dia17,taxa.freq_diaria.dia18,taxa.freq_diaria.dia19,taxa.freq_diaria.dia20,taxa.freq_diaria.dia21,taxa.freq_diaria.dia22,taxa.freq_diaria.dia23,taxa.freq_diaria.dia24,taxa.freq_diaria.dia25,taxa.freq_diaria.dia26,taxa.freq_diaria.dia27,taxa.freq_diaria.dia28,taxa.freq_diaria.dia29,taxa.freq_diaria.dia30,taxa.freq_diaria.dia31);
 
@@ -193,38 +192,6 @@ mainDetalhes.prototype.faixaEtariaChart = function(a,b,c,d,e,f){
 	];
 
 	new Chartist.Pie('#chartFaixaEtaria', data, options, responsiveOptions);
-};
-
-mainDetalhes.prototype.plataformaChart = function(android, ios, outros){
-	
-	var labels = ['Android', 'IOs', 'Outros'];
-	
-	var data = {
-	  series: [android, ios, outros]
-	};
-
-	var options = {
-	  labelInterpolationFnc: function(value) {
-		return value[0];
-	  }
-	};
-
-	var responsiveOptions = [
-	  ['screen and (min-width: 640px)', {
-		chartPadding: 30,
-		labelOffset: 100,
-		labelDirection: 'explode',
-		labelInterpolationFnc: function(value, idx) {
-		  return labels[idx]+" ("+value+"%)";
-		}
-	  }],
-	  ['screen and (min-width: 1024px)', {
-		labelOffset: 80,
-		chartPadding: 20
-	  }]
-	];
-
-	new Chartist.Pie('#chartPlataformas', data, options, responsiveOptions);
 };
 
 mainDetalhes.prototype.freqMensalChart = function(jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez){
