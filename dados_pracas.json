@@ -28,11 +28,6 @@
 					"mediaMensal":"15",
 					"taxa_cres_mensal":"6.43",
 					"taxa_retensao":"69",
-					"plataforma":{
-						"android":"52.4",
-						"ios":"31.2",
-						"outros":"16.1"
-					},
 					"freq_diaria":{
 						"dia1":"10",
 						"dia2":"20",
@@ -118,11 +113,6 @@
 					"mediaMensal":"33",
 					"taxa_cres_mensal":"3.34",
 					"taxa_retensao":"42",
-					"plataforma":{
-						"android":"45.4",
-						"ios":"34.5",
-						"outros":"20.1"
-					},
 					"freq_diaria":{
 						"dia1":"23",
                         "dia2":"35",
@@ -209,11 +199,6 @@
 					"mediaMensal":"44",
 					"taxa_cres_mensal":"7.21",
 					"taxa_retensao":"54",
-					"plataforma":{
-						"android":"50.2",
-						"ios":"32.4",
-						"outros":"18.4"
-					},
 					"freq_diaria":{
 						"dia1":"44",
                         "dia2":"41",
@@ -273,7 +258,7 @@
 
                 }
             }
-		},
+		}
 		
 	}
 }
