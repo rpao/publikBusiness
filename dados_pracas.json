@@ -28,62 +28,17 @@
 					"mediaMensal":"15",
 					"taxa_cres_mensal":"6.43",
 					"taxa_retensao":"69",
-					"freq_diaria":{
-						"dia1":"10",
-						"dia2":"20",
-						"dia3":"8",
-						"dia4":"13",
-						"dia5":"30",
-						"dia6":"31",
-						"dia7":"18",
-						"dia8":"42",
-						"dia9":"12",
-						"dia10":"37",
-						"dia11":"10",
-						"dia12":"20",
-						"dia13":"8",
-						"dia14":"13",
-						"dia15":"30",
-						"dia16":"31",
-						"dia17":"18",
-						"dia18":"42",
-						"dia19":"12",
-						"dia20":"37",
-						"dia21":"10",
-						"dia22":"20",
-						"dia23":"8",
-						"dia24":"13",
-						"dia25":"30",
-						"dia26":"31",
-						"dia27":"18",
-						"dia28":"42",
-						"dia29":"12",
-						"dia30":"37",
-						"dia31":"10"
+					"plataforma":{
+						"android":"52.4",
+						"ios":"31.2",
+						"outros":"16.1"
 					},
-					"freq_semanal":{
-						"seg":"30",
-						"ter":"25",
-						"qua":"22",
-						"qui":"20",
-						"sex":"35",
-						"sab":"32",
-						"dom":"34"
+					"freq":{
+						"manha":"20",
+						"tarde":"25",
+						"noite":"35"
 					},
-					"freq_mensal":{
-						"jan":"340",
-						"fev":"150",
-						"mar":"200",
-						"abr":"231",
-						"mai":"143",
-						"jun":"153",
-						"jul":"400",
-						"ago":"342",
-						"set":"121",
-						"out":"331",
-						"nov":"123",
-						"dez":"421"
-					}
+					"caracteristicas":["poucoArb","brinquedos","esportes"]
 				}
             },
             "id2":{
@@ -113,63 +68,17 @@
 					"mediaMensal":"33",
 					"taxa_cres_mensal":"3.34",
 					"taxa_retensao":"42",
-					"freq_diaria":{
-						"dia1":"23",
-                        "dia2":"35",
-                        "dia3":"22",
-                        "dia4":"21",
-                        "dia5":"29",
-                        "dia6":"17",
-                        "dia7":"13",
-                        "dia8":"13",
-                        "dia9":"26",
-                        "dia10":"31",
-                        "dia11":"19",
-                        "dia12":"16",
-                        "dia13":"22",
-                        "dia14":"30",
-                        "dia15":"19",
-                        "dia16":"17",
-                        "dia17":"19",
-                        "dia18":"36",
-                        "dia19":"12",
-                        "dia20":"27",
-                        "dia21":"20",
-                        "dia22":"13",
-                        "dia23":"25",
-                        "dia24":"26",
-                        "dia25":"26",
-                        "dia26":"28",
-                        "dia27":"27",
-                        "dia28":"34",
-                        "dia29":"16",
-                        "dia30":"14",
-                        "dia31":"26"
+					"plataforma":{
+						"android":"45.4",
+						"ios":"34.5",
+						"outros":"20.1"
 					},
-					"freq_semanal":{
-						"seg":"25",
-						"ter":"27",
-						"qua":"21",
-						"qui":"22",
-						"sex":"30",
-						"sab":"32",
-						"dom":"30"
+					"freq":{
+						"manha":"20",
+						"tarde":"35",
+						"noite":"30"
 					},
-					"freq_mensal":{
-						"jan":"293",
-						"fev":"311",
-						"mar":"223",
-						"abr":"201",
-						"mai":"146",
-						"jun":"190",
-						"jul":"301",
-						"ago":"298",
-						"set":"138",
-						"out":"210",
-						"nov":"133",
-						"dez":"320"
-					}
-
+					"caracteristicas":["carros"]
                 }
             },
             "id3":{
@@ -199,66 +108,19 @@
 					"mediaMensal":"44",
 					"taxa_cres_mensal":"7.21",
 					"taxa_retensao":"54",
-					"freq_diaria":{
-						"dia1":"44",
-                        "dia2":"41",
-                        "dia3":"50",
-                        "dia4":"31",
-                        "dia5":"27",
-                        "dia6":"20",
-                        "dia7":"49",
-                        "dia8":"29",
-                        "dia9":"43",
-                        "dia10":"36",
-                        "dia11":"34",
-                        "dia12":"33",
-                        "dia13":"40",
-                        "dia14":"26",
-                        "dia15":"30",
-                        "dia16":"29",
-                        "dia17":"43",
-                        "dia18":"26",
-                        "dia19":"30",
-                        "dia20":"21",
-                        "dia21":"29",
-                        "dia22":"39",
-                        "dia23":"29",
-                        "dia24":"41",
-                        "dia25":"22",
-                        "dia26":"28",
-                        "dia27":"45",
-                        "dia28":"33",
-                        "dia29":"39",
-                        "dia30":"35",
-                        "dia31":"33"
+					"plataforma":{
+						"android":"50.2",
+						"ios":"32.4",
+						"outros":"18.4"
 					},
-					"freq_semanal":{
-						"seg":"28",
-						"ter":"24",
-						"qua":"21",
-						"qui":"35",
-						"sex":"41",
-						"sab":"42",
-						"dom":"40"
+					"freq":{
+						"manha":"43",
+						"tarde":"23",
+						"noite":"30"
 					},
-					"freq_mensal":{
-						"jan":"383",
-						"fev":"452",
-						"mar":"310",
-						"abr":"225",
-						"mai":"241",
-						"jun":"352",
-						"jul":"417",
-						"ago":"326",
-						"set":"231",
-						"out":"273",
-						"nov":"252",
-						"dez":"431"
-					}
-
+					"caracteristicas":["centro","carros","brinquedos"]
                 }
             }
 		}
-		
 	}
 }
