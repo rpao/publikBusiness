@@ -1,4 +1,4 @@
-# publikBusiness
+# publik
 
 Para executar:
 1. instalar npm: 
