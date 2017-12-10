@@ -1,0 +1,145 @@
+{
+  "publik" : {
+    "empresa" : {
+      "-L-u_9yHfD2ySd_mLgQq" : {
+        "cargo" : "Chefe de Relações Públicas",
+        "cnpj" : "01010/09",
+        "cpf" : "111.111.111-99",
+        "dataCadastro" : "01/11/2017",
+        "dataHoraContato" : "2017-12-14;10:00",
+        "email" : "rutesilva@email.com",
+        "empresa" : "Nike Inc",
+        "endereco" : "Av. Nike,SN-1000-00",
+        "locais_adotados" : "id1|sdkj|sdks;",
+        "localContato" : "Sede",
+        "responsavel" : "Rute da Silva",
+        "status" : "em processamento",
+        "telefone" : "3333-3333",
+        "telefoneResponsavel" : "99999-9999",
+        "tipoCadastro" : "Busca"
+      }
+    },
+    "locais" : {
+      "id1" : {
+        "avaliacao" : "4.1",
+        "endereco" : "Av Afonso Olindense, SN - Várzea, Recife - PE, 50741-040",
+        "historia" : "Foi elaborada pelo consagrado paisagista brasileiro Roberto Burle Marx, falecido em 1994.Em 1936, Burle Marx concebeu um projeto de ajardinamento para a praça que previa um playground, um coreto, um lago central com fonte e um caramanchão que permitiria o sombreamento da área. Nos jardins, o paisagista programou a colocação de mangueiras, ficus-beijamina, oiti-da-praia e palmeira-real – substituídas pelas palmeiras-imperiais que estão até hoje por lá.",
+        "latitude" : "-8.0491137",
+        "longitude" : "-34.9594562",
+        "nome" : "Praça Pinto Damásio (Praça da Várzea)",
+        "taxas" : {
+          "caracteristicas" : [ "poucoArb", "brinquedos", "esportes" ],
+          "classeSocial" : {
+            "A" : "2",
+            "B" : "30",
+            "C" : "50",
+            "D" : "10",
+            "E" : "8"
+          },
+          "faixaEtaria" : {
+            "id0" : "5",
+            "id1" : "30",
+            "id2" : "50",
+            "id3" : "10",
+            "id4" : "3",
+            "id5" : "2"
+          },
+          "freq" : {
+            "manha" : "20",
+            "noite" : "35",
+            "tarde" : "25"
+          },
+          "mediaMensal" : "15",
+          "nivelSats" : "50",
+          "plataforma" : {
+            "android" : "52.4",
+            "ios" : "31.2",
+            "outros" : "16.1"
+          },
+          "taxa_cres_mensal" : "6.43",
+          "taxa_retensao" : "69"
+        }
+      },
+      "id2" : {
+        "avaliacao" : "4.5",
+        "endereco" : "Praça de Casa Forte - Casa Forte, Recife - PE, 52061-420",
+        "historia" : "Primeiro jardim público idealizado por Roberto Burle Marx, em 1934, o logradouro tem este nome em alusão ao Engenho da Casa Forte, que também deu nome ao bairro, onde ocorreu o Combate de Casa Forte, entre pernambucanos e holandeses, em 1645. No ano de 1933, o pátio em frente à Igreja foi revitalizado. Quatro anos depois, em 1937, o Prefeito Novaes Filho transforma esse logradouro em um espaço de lazer, colocando-o à disposição da população pernambucana",
+        "latitude" : "-8.0348372",
+        "longitude" : "-34.9194450",
+        "nome" : "Praça de Casa Forte",
+        "taxas" : {
+          "caracteristicas" : [ "carros" ],
+          "classeSocial" : {
+            "A" : "10",
+            "B" : "35",
+            "C" : "40",
+            "D" : "10",
+            "E" : "5"
+          },
+          "faixaEtaria" : {
+            "id0" : "10",
+            "id1" : "30",
+            "id2" : "40",
+            "id3" : "10",
+            "id4" : "8",
+            "id5" : "2"
+          },
+          "freq" : {
+            "manha" : "20",
+            "noite" : "30",
+            "tarde" : "35"
+          },
+          "mediaMensal" : "33",
+          "nivelSats" : "74",
+          "plataforma" : {
+            "android" : "45.4",
+            "ios" : "34.5",
+            "outros" : "20.1"
+          },
+          "taxa_cres_mensal" : "3.34",
+          "taxa_retensao" : "42"
+        }
+      },
+      "id3" : {
+        "avaliacao" : "3.9",
+        "endereco" : "Praça do Derby - Centro, Recife - PE, 52010-140",
+        "historia" : "Foi projetada e construída em 1925 em frente ao que antes foi o hotel de Delmiro Gouveia e fazia parte do projeto recreativo deste.Teve sua construção executada no governo de Sérgio Loreto, tendo como prefeito o engenheiro Antônio de Góis. O projeto antecedeu o que foi denominado Paisagismo Moderno, lançando bases para o paisagismo depois projetado e executado pelo arquiteto Burle Marx.",
+        "latitude" : "-8.056698",
+        "longitude" : "-34.899324",
+        "nome" : "Praça do Derby",
+        "taxas" : {
+          "caracteristicas" : [ "centro", "carros", "brinquedos" ],
+          "classeSocial" : {
+            "A" : "5",
+            "B" : "30",
+            "C" : "30",
+            "D" : "25",
+            "E" : "10"
+          },
+          "faixaEtaria" : {
+            "id0" : "10",
+            "id1" : "25",
+            "id2" : "30",
+            "id3" : "25",
+            "id4" : "11",
+            "id5" : "4"
+          },
+          "freq" : {
+            "manha" : "43",
+            "noite" : "30",
+            "tarde" : "23"
+          },
+          "mediaMensal" : "44",
+          "nivelSats" : "53",
+          "plataforma" : {
+            "android" : "50.2",
+            "ios" : "32.4",
+            "outros" : "18.4"
+          },
+          "taxa_cres_mensal" : "7.21",
+          "taxa_retensao" : "54"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Publik</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:600" type="text/css" rel="stylesheet">
+  <link href="styles/estilo.css" type="text/css" rel="stylesheet">
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Friendly Chat">
+  <meta name="theme-color" content="#303F9F">
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Friendly Chat">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+  <!-- Tile icon for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-navbutton-color" content="#303F9F">
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+  <script defer="" src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.min.css">
+  <style>
+    .ct-chart {
+      height: 300px;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+  <script>
+    //Gets Empresa and local's ids from URL
+    	var url = location.href;
+    	var query = url.split("?");
+    	query = query[1].split("&");
+    	query[0] = query[0].split("=");
+    	query[1] = query[1].split("=");
+    
+    	var KEY = query[0][1];   // id da empresa
+    	var LOCAL = query[1][1]; // id do local
+    	
+    	function redirecionarCadastro(){
+    		window.location.href = "cadastro.html?id="+LOCAL;
+    	}
+    	
+        function validaKey(){
+    	    var xhttp = new XMLHttpRequest();
+    		
+    		xhttp.onreadystatechange = function() {
+    			if (this.readyState == 4 && this.status == 200) {
+    				verificaKey(this);
+    			}
+    		};
+    		
+    		xhttp.open("GET", "keys_busca.xml", true);
+    		xhttp.send();
+    	}
+    	function verificaKey(xml){
+    		var	keys = [];
+    		var xmlDoc = xml.responseXML;
+    		
+    		for (var i = 0; i < xmlDoc.getElementsByTagName("key").length; i++){
+    			keys[keys.length] = xmlDoc.getElementsByTagName("key")[i].firstChild.nodeValue;
+    		}
+    		
+    		var inputKey = document.getElementById('key');
+    		
+    		if (keys.indexOf(inputKey.value) != -1) {
+    		  window.location.href = "buscar.html?id="+inputKey.value;
+    		}else{
+    		  alert('Key Inválida');
+    		  inputKey.value = "";
+    		}
+    	}
+    	
+    	function validaLogin(){
+    		var xhttp = new XMLHttpRequest();
+    		
+    		xhttp.onreadystatechange = function() {
+    			if (this.readyState == 4 && this.status == 200) {
+    				verificacaoLogin(this);
+    			}
+    		};
+    		xhttp.open("GET", "dadoslogin.xml", true);
+    		xhttp.send();
+    	}
+    
+    	function verificacaoLogin(xml){
+    		var	ids = [];
+    		var senhas = [];
+    		var xmlDoc = xml.responseXML;
+    		
+    		var inputID = document.getElementById('id').value;
+    		var inputSenha = document.getElementById('senha').value;
+    		
+    		for (var i = 0; i < xmlDoc.getElementsByTagName("ID").length; i++){
+    			ids[ids.length] = xmlDoc.getElementsByTagName("ID")[i].firstChild.nodeValue;
+    		}
+    		
+    		for (var i = 0; i < xmlDoc.getElementsByTagName("senha").length; i++){
+    			senhas[senhas.length] = xmlDoc.getElementsByTagName("senha")[i].firstChild.nodeValue;
+    		}
+    		
+    		if (inputID == "" || inputSenha == ""){
+    			alert("Todos os campos devem ser preechidos");
+    		}else{
+    			var indexID = ids.indexOf(inputID);
+    			var indexSenha = senhas.indexOf(inputSenha);
+    			
+    			if (indexID != -1 && indexSenha != -1){
+    				window.location.href = "painel.html?id="+inputID;
+    			}else{
+    				alert("Campo(s) Incorreto(s)");
+    				document.getElementById('id').value = "";
+    				document.getElementById('senha').value = "";
+    			}
+    		}
+    	}
+  </script>
+  <nav class="navbar navbar-expand-md bg-light navbar-light">
+    <div class="container">
+      <div class="col-md-5 align-self-center">
+        <img class="img-fluid w-25" src="images/publikLogo.png"> </div>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" href="cadastroKey.html"><i class="fa d-inline fa-lg fa-key"></i> Obter Key</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" onclick="document.getElementById('id01').style.display='block'"><i class="fa d-inline fa-lg fa-neuter"></i> Buscar Locais</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" href="/"><i class="fa d-inline fa-lg fa-sign-out"></i> Sair</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"> </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="py-5">
+    <div id="id01" class="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- card-4 animate-zoom" style="max-width:600px"-->
+          <div class="modal-header">
+            <h5 class="modal-title">Insira Key de Busca</h5>
+          </div>
+          <center>
+            <br>
+            <div class="form-group w-75"> <span id="errorKey"></span> </div>
+            <div class="form-group w-75">
+              <input id="key" type="text" class="form-control" required="" name="key" title="Inserir Key"> </div>
+          </center>
+          <div class="modal-footer">
+            <a onclick="validaKey()" class="btn btn-outline-primary">Continuar</a>
+            <a class="btn btn-outline-danger" onclick="javascript:location.reload()">Cancelar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <center>
+      <div id="id02" class="modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <!-- card-4 animate-zoom" style="max-width:600px"-->
+            <div class="modal-header">
+              <h5 class="modal-title">Você será redirecionado para o formulário de cadastro</h5>
+            </div>
+            <div class="modal-body">
+              <p>Esse cadastro é uma intenção de contrato e a partir dele entraremos em contato com sua empresa para iniciarmos o processo de adoção.</p>
+            </div>
+            <div class="modal-footer">
+              <a onclick="redirecionarCadastro()" class="btn btn-outline-primary">Continuar</a>
+              <a onclick="javascript:location.reload()" class="btn btn-outline-danger">Cancelar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </center>
+    <div class="container">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header bg-light text-dark">
+            <h2 class="text-secondary"><i class="fa d-inline fa-lg fa-map-marker"></i>
+              <a id="nome"></a>
+            </h2>
+          </div>
+          <div class="card-body text-dark">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td class="text-muted w-25">Endereço:</td>
+                  <td id="endereco"></td>
+                </tr>
+                <tr>
+                  <td class="text-muted w-25">Avaliação:</td>
+                  <td id="avaliacao"></td>
+                </tr>
+                <tr>
+                  <td class="text-muted w-25">História:</td>
+                  <td id="historia" class="text-justify"></td>
+                </tr>
+                <tr>
+                  <td class="text-muted w-25">Nível de Satisfação:</td>
+                  <td id="nivel_satisfacao"></td>
+                </tr>
+                <tr>
+                  <td class="text-muted w-25">Média Mensal de Usuários</td>
+                  <td id="user_med_mensal"></td>
+                </tr>
+                <tr>
+                  <td class="text-muted w-25">Taxa de Crescimento Mensal:</td>
+                  <td id="taxa_cres_mensal"></td>
+                </tr>
+                <tr>
+                  <td class="text-muted w-25">Taxa de Retensão:</td>
+                  <td id="taxa_retensao"></td>
+                </tr>
+              </tbody>
+            </table>
+            <center>
+              <div class="container">
+                <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-danger">Adotar</button>
+              </div>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="line-height: 2em"> </p>
+    <p style="line-height: 2em"> </p>
+  </div>
+  <div class="container">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-light text-dark">
+          <h2 class="text-secondary"><i class="fa d-inline fa-lg fa-pie-chart"></i>
+            <a> Estatísticas </a>
+          </h2>
+        </div>
+        <center>
+          <div class="card-body text-dark">
+            <div class="col-md-6">
+              <div class="card-body">
+                <h4><i><b>Classe Social</b></i></h4>
+                <div class="ct-chart text-dark w-100" id="chartClasseSocial"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <h4><i><b> Faixa Etária </b></i></h4>
+                <div class="ct-chart w-100" id="chartFaixaEtaria"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <h4><i><b> Frequencia Por Horário </b></i></h4>
+                <div class="ct-chart w-100" id="chartFreqMensal"></div>
+              </div>
+            </div>
+            <table class="table">
+              <tbody>
+                <tr> </tr>
+                <tr> </tr>
+                <tr> </tr>
+              </tbody>
+            </table>
+            <center>
+              <div class="container">
+                <button onclick="document.getElementById('id02').style.display='block'" class="btn btn-danger">Adotar</button>
+              </div>
+            </center>
+          </div>
+        </center>
+      </div>
+    </div>
+  </div>
+	<p style="line-height: 2em"> </p>
+	<p style="line-height: 2em"> </p>
+	<p style="line-height: 2em"> </p>
+	<p style="line-height: 2em"> </p>
+  <div class="bg-light text-dark ">
+    <div class="container ">
+      <div class="row ">
+        <div class="align-self-center col-md-9 ">
+          <img class="img-fluid w-100 " src="images/publikFoot.png "> </div>
+        <div class="p-4 col-md-3 ">
+          <h2 class="mb-4 text-dark ">Mapsite</h2>
+          <ul class="list-unstyled ">
+            <a href="/ " class="text-secondary ">Home</a>
+            <br>
+            <a href="sobrePublik.html " class="text-secondary ">Nossos serviços</a>
+            <br>
+            <a href="cadastroKey.html " class="text-secondary ">Obter uma Key de Busca</a>
+            <br>
+            <a href="sobreAdoteVerde.html " class="text-secondary ">Programa Adote o Verde</a>
+          </ul>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-md-12 mt-3 ">
+          <p class="text-center ">© Copyright 2017 Publik - All rights reserved. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Import and configure the Firebase SDK -->
+  <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
+  <!-- If you do not want to serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
+  <script src="/__/firebase/4.1.3/firebase.js "></script>
+  <script src="/__/firebase/init.js "></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://rawgit.com/gionkunz/chartist-js/master/dist/chartist.js"></script>
+  <script src="scripts/mainDetalhesLocal.js "></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js " integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4 " crossorigin="anonymous "></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js " integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1 " crossorigin="anonymous "></script>
+</body>
+
+</html>

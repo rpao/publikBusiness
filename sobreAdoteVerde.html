@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css"> </head>
+
+<body>
+  <script>
+    function validaKey(){
+	    var xhttp = new XMLHttpRequest();
+		
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				verificaKey(this);
+			}
+		};
+		
+		xhttp.open("GET", "keys_busca.xml", true);
+		xhttp.send();
+	}
+	function verificaKey(xml){
+		var	keys = [];
+		var xmlDoc = xml.responseXML;
+		
+		for (var i = 0; i < xmlDoc.getElementsByTagName("key").length; i++){
+			keys[keys.length] = xmlDoc.getElementsByTagName("key")[i].firstChild.nodeValue;
+		}
+		
+		var inputKey = document.getElementById('key');
+		
+		if (keys.indexOf(inputKey.value) != -1) {
+		  window.location.href = "buscar.html?id="+inputKey.value;
+		}else{
+		  alert('Key Inválida');
+		  inputKey.value = "";
+		}
+	}
+	
+	function validaLogin(){
+		var xhttp = new XMLHttpRequest();
+		
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				verificacaoLogin(this);
+			}
+		};
+		xhttp.open("GET", "dadoslogin.xml", true);
+		xhttp.send();
+	}
+
+	function verificacaoLogin(xml){
+		var	ids = [];
+		var senhas = [];
+		var xmlDoc = xml.responseXML;
+		
+		var inputID = document.getElementById('id').value;
+		var inputSenha = document.getElementById('senha').value;
+		
+		for (var i = 0; i < xmlDoc.getElementsByTagName("ID").length; i++){
+			ids[ids.length] = xmlDoc.getElementsByTagName("ID")[i].firstChild.nodeValue;
+		}
+		
+		for (var i = 0; i < xmlDoc.getElementsByTagName("senha").length; i++){
+			senhas[senhas.length] = xmlDoc.getElementsByTagName("senha")[i].firstChild.nodeValue;
+		}
+		
+		if (inputID == "" || inputSenha == ""){
+			alert("Todos os campos devem ser preechidos");
+		}else{
+			var indexID = ids.indexOf(inputID);
+			var indexSenha = senhas.indexOf(inputSenha);
+			
+			if (indexID != -1 && indexSenha != -1){
+				window.location.href = "painel.html?id="+inputID;
+			}else{
+				alert("Campo(s) Incorreto(s)");
+				document.getElementById('id').value = "";
+				document.getElementById('senha').value = "";
+			}
+		}
+	}
+  </script>
+  
+  <nav class="navbar navbar-expand-md bg-light navbar-light">
+    <div class="container">
+      <div class="col-md-5 align-self-center">
+        <img class="img-fluid w-25" src="images/publikLogo.png"> </div>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" href="cadastroKey.html"><i class="fa d-inline fa-lg fa-key"></i> Obter Key</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" onclick="document.getElementById('id01').style.display='block'"><i class="fa d-inline fa-lg fa-neuter"></i> Buscar Locais</a>
+          </li>
+		  <li class="nav-item">
+            <a class="btn text-dark btn-outline-primary border border-light" onclick="document.getElementById('id02').style.display='block'"><i class="fa d-inline fa-lg fa-sign-in"></i> Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"> </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="py-5">
+    <div id="id01" class="modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- card-4 animate-zoom" style="max-width:600px"-->
+          <div class="modal-header">
+            <h5 class="modal-title">Insira Key de Busca</h5>
+          </div>
+          <center>
+            <br>
+            <div class="form-group w-75"> <span id="errorKey"></span> </div>
+            <div class="form-group w-75">
+              <input id="key" type="text" class="form-control" required="" name="key" title="Inserir Key">
+              <!--input id="key" name="key" type="text" required="" class="form-control" title="Inserir Key" oninput="validaKey()"-->
+            </div>
+          </center>
+          <div class="modal-footer">
+            <a onclick="validaKey()" class="btn btn-outline-primary">Continuar</a>
+            <a class="btn btn-outline-danger" onclick="javascript:location.reload()">Cancelar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	<div id="id02" class="modal bg-dark">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- card-4 animate-zoom" style="max-width:600px"-->
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fa d-inline fa-lg fa-sign-in"></i> Login</a></h5>
+          </div>
+          <center>
+            <br>
+            <div class="form-group w-75"> <span id="errorKey"></span> </div>
+            <div class="form-group w-75">
+				<div class="form-group w-75 text-left"> 
+				  <label>ID (*)</label>
+				  <input id="id" type="text" class="form-control" required="" name="id" title="Inserir ID">
+				</div>
+				<div class="form-group w-75 text-left"> 
+				  <label>Senha (*)</label>
+				  <input id="senha" type="password" class="form-control" required="" name="senha" title="Inserir Senha">
+				</div>		
+            </div>
+          </center>
+          <div class="modal-footer">
+            <a  onclick = validaLogin()  class="btn btn-outline-primary">Continuar</a>
+			<!--a onclick="validaKey()" class="btn btn-outline-primary">Continuar</a-->
+            <a class="btn btn-outline-danger" onclick="javascript:location.reload()">Cancelar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-7">
+          <h2 class="text-success">Programa Adote o Verde</h2>
+          <p class="text-justify text-dark">O Recife conta atualmente com mais de 400 áreas verdes públicas, mas considerando a dimensão do território urbanizado da cidade, é pouco.&nbsp;
+            <br>
+            <br><span style="font-size: 1rem;">É necessário recuperar e manter o que já existe, para que a
+comunidade possa usufruir adequadamente e a</span><span style="font-size: 1rem;">&nbsp;parceria entre os poderes público e privado tem se mostrado eficiente a esse fim.&nbsp;</span>
+            <br>
+            <br>O Programa Adote o Verde é um programa regulamentado pela
+            <a href="http://www2.recife.pe.gov.br/pagina/empresa-de-manutencao-e-limpeza-urbana-emlurb">EMLURB</a>, que veio para tentar aumentar as parcerias e otimizar os recursos aplicados, agilizando e melhorando os serviços prestados à comunidade.&nbsp;
+            <br>
+            <br>
+            <br>Isso significa mais verde no Recife e vida melhor para a população </p>
+          <br>Para mais detalhes, veja a
+          <a href="https://www.recife.pe.gov.br/pr/servicospublicos/emlurb/ProgramaAdoteVerde.pdf" download=""> Cartilha</a>.
+          <br> </div>
+        <div class="col-md-5 align-self-center">
+          <img class="img-fluid d-block img-thumbnail mx-auto w-75" src="images/adoteVerdeLogo.png"> </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5"> </div>
+        <div class="col-md-7"> </div>
+      </div>
+      <div class="">
+        <h2 class="text-success">Deveres do Adotante</h2>
+        <ul class="">
+          <li class="text-justify">Respeitar as diretrizes de intervenções nos espaços livres públicos definidas pela Prefeitura do Recife.</li>
+          <li>Executar os serviços de recuperação do patrimônio adotado, com presteza e boa técnica, procurando minimizar os transtornos aos usuários, segundo projeto elaborado pela Prefeitura do Recife</li>
+          <li>Responsabilizar-se por perdas e danos que eventualmente vier a causar durante a execução dos serviços, ainda que decorrentes de imprudência, negligência ou imperícia de seus administradores ou empregados.
+            <br> </li>
+          <li>Conservar e manter passeios internos ou cerca de proteção dos jardins, equipamentos de irrigação e drenagem, equipamentos de lazer e descanso, além de monumentos públicos, quando instalados na área adotada.</li>
+          <li>Conservar e manter árvores, gramados, arbustos e plantas ornamentais.</li>
+          <li>Responsabilizar-se por transporte, alimentação e alojamento de pessoal contratado para a execução dos serviços.</li>
+          <li>Utilizar para a execução dos serviços de manutenção, pessoas habilitadas, adequadamente treinadas, uniformizadas e munidas de equipamentos e instrumentos de proteção e segurança contra acidentes.</li>
+          <li>Submeter à análise prévia da Prefeitura do Recife qualquer tipo de intervenção e/ou realização de atividades e eventos.</li>
+          <li>Prover o abastecimento d´água permanente, dependendo do porte da área adotada. Responsabilizar-se pela segurança do logradouro. Atender às exigências da fiscalização da Prefeitura do Recife.</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-justify">
+          <h2 class="pt-3 text-success">Benefícios do Adotante</h2>
+          <ul class="">
+            <li>Autorização à pessoa jurídica, participante do Programa Adote o Verde, a instalar placas publicitárias padronizadas nos locais adotados, em espaços pré- destinados pela Prefeitura do Recife.</li>
+            <li>Associação da marca com um programa de proteção e preservação ambiental.</li>
+            <li>Inclusão da relação dos nomes dos participantes do Programa Adote o Verde nos meios institucionais de divulgação da Prefeitura do Recife. </li>
+            <li>Contribuição efetiva na conservação e preservação do Meio Ambiente e na melhoria da qualidade de vida da população, além da satisfação e reconhecimento da comunidade e usuários.</li>
+          </ul>
+        </div>
+      </div>
+      <center>
+        <div class="row">
+          <div class="col-md-6">
+            <img class="d-block mb-4 w-75" src="images/adoteVerdePlaca1.JPG"> </div>
+          <div class="col-md-6">
+            <img class="d-block mb-4 w-75" src="images/adoteVerdePlaca2.JPG"> </div>
+        </div>
+        <a href="sobrePublik.html" class="btn btn-outline-primary">Conheça nossa Proposta</a>
+      </center>
+    </div>
+  </div>
+  <div class="bg-light text-dark">
+    <div class="container">
+      <div class="row">
+        <div class="align-self-center col-md-9">
+          <img class="img-fluid w-100" src="images/publikFoot.png"> </div>
+        <div class="p-4 col-md-3">
+          <h2 class="mb-4 text-dark">Mapsite</h2>
+          <ul class="list-unstyled">
+            <a href="/" class="text-secondary">Home</a>
+            <br>
+            <a href="sobrePublik.html" class="text-secondary">Nossos serviços</a>
+            <br>
+            <a href="cadastroKey.html" class="text-secondary">Obter uma Key de Busca</a>
+            <br>
+            <a href="sobreAdoteVerde.html" class="text-secondary">Programa Adote o Verde</a>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <p class="text-center">© Copyright 2017 Publik - All rights reserved. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+
+</html>
